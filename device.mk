@@ -26,6 +26,10 @@ $(call inherit-product, device/xiaomi/sm6125-common/common.mk)
 
 DEVICE_PATH := device/xiaomi/laurel_sprout
 
+# Soong namespaces
+PRODUCT_SOONG_NAMESPACES += \
+    $(LOCAL_PATH)
+
 # A/B
 AB_OTA_UPDATER := true
 
