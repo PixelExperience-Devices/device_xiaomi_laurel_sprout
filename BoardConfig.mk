@@ -29,6 +29,16 @@ DEVICE_PATH := device/xiaomi/laurel_sprout
 
 BUILD_BROKEN_DUP_RULES := true
 
+# A/B
+AB_OTA_UPDATER := true
+
+AB_OTA_PARTITIONS += \
+    boot \
+    dtbo \
+    system \
+    vbmeta \
+    vendor
+
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1560
 TARGET_SCREEN_WIDTH := 720
