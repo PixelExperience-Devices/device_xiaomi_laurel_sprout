@@ -52,17 +52,13 @@ PRODUCT_PACKAGES += \
 # Boot control
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.0-impl \
+    android.hardware.boot@1.0-impl.recovery \
     android.hardware.boot@1.0-service \
-    bootctrl.trinket
+    bootctrl.trinket \
+    bootctrl.trinket.recovery
 
 PRODUCT_PACKAGES_DEBUG += \
     bootctl
-
-PRODUCT_STATIC_BOOT_CONTROL_HAL := \
-    bootctrl.trinket \
-    libcutils \
-    libgptutils \
-    libz
 
 # Audio
 PRODUCT_COPY_FILES += \
