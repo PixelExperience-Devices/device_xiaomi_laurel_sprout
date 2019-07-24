@@ -550,7 +550,7 @@ DisplayError CompManager::ControlDpps(bool enable) {
   return kErrorNone;
 }
 
-bool CompManager::SetDisplayState(Handle display_ctx, DisplayState state) {
+bool CompManager::SetDisplayState(Handle display_ctx, DisplayState state, int sync_handle) {
   DisplayCompositionContext *display_comp_ctx =
       reinterpret_cast<DisplayCompositionContext *>(display_ctx);
 
@@ -588,6 +588,8 @@ bool CompManager::SetDisplayState(Handle display_ctx, DisplayState state) {
   bool inactive = (state == kStateOff) || (state == kStateDozeSuspend);
   UpdateStrategyConstraints(display_comp_ctx->is_primary_panel, inactive);
 
+  resource_intf_->Perform(ResourceInterface::kCmdUpdateSyncHandle,
+                          display_comp_ctx->display_resource_ctx, sync_handle);
   return true;
 }
 
@@ -643,6 +645,13 @@ void CompManager::UpdateStrategyConstraints(bool is_primary, bool disabled) {
   // Allow builtin display to use all pipes when primary is suspended.
   // Restore it back to 2 after primary poweron.
   max_sde_builtin_layers_ = (disabled && (powered_on_displays_.size() <= 1)) ? kMaxSDELayers : 2;
+}
+
+bool CompManager::CanSkipValidate(Handle display_ctx) {
+  DisplayCompositionContext *display_comp_ctx =
+      reinterpret_cast<DisplayCompositionContext *>(display_ctx);
+
+  return display_comp_ctx->strategy->CanSkipValidate();
 }
 
 }  // namespace sdm

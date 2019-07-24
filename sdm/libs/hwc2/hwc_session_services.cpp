@@ -666,12 +666,60 @@ Return<int32_t> HWCSession::updateVSyncSourceOnPowerModeDoze() {
 #endif
 
 #ifdef DISPLAY_CONFIG_1_7
-Return<int32_t> HWCSession::setPowerMode(uint32_t disp_id, PowerMode power_mode) {
-  return 0;
+Return<bool> HWCSession::isPowerModeOverrideSupported(uint32_t disp_id) {
+  if (!async_powermode_ || (disp_id > HWCCallbacks::kNumRealDisplays)) {
+    return false;
+  }
+
+  return true;
 }
 
-Return<bool> HWCSession::isPowerModeOverrideSupported(uint32_t disp_id) {
-  return false;
+Return<int32_t> HWCSession::setPowerMode(uint32_t disp_id, PowerMode power_mode) {
+  SCOPE_LOCK(display_config_locker_);
+
+  if (!isPowerModeOverrideSupported(disp_id)) {
+    return 0;
+  }
+
+  DLOGI("disp_id: %d power_mode: %d", disp_id, power_mode);
+  HWCDisplay::HWCLayerStack stack = {};
+  hwc2_display_t dummy_disp_id = map_hwc_display_.at(disp_id);
+
+  {
+    // Power state transition start.
+    Locker::ScopeLock lock_power(power_state_[disp_id]);
+    Locker::ScopeLock lock_primary(locker_[disp_id]);
+    Locker::ScopeLock lock_dummy(locker_[dummy_disp_id]);
+
+    power_state_transition_[disp_id] = true;
+    // Pass on the complete stack to dummy display.
+    hwc_display_[disp_id]->GetLayerStack(&stack);
+    // Update the same stack onto dummy display.
+    hwc_display_[dummy_disp_id]->SetLayerStack(&stack);
+  }
+
+  {
+    SCOPE_LOCK(locker_[disp_id]);
+    auto mode = static_cast<HWC2::PowerMode>(power_mode);
+    hwc_display_[disp_id]->SetPowerMode(mode, false /* teardown */);
+  }
+
+  {
+    // Power state transition end.
+    Locker::ScopeLock lock_power(power_state_[disp_id]);
+    Locker::ScopeLock lock_primary(locker_[disp_id]);
+    Locker::ScopeLock lock_dummy(locker_[dummy_disp_id]);
+    // Pass on the layer stack to real display.
+    hwc_display_[dummy_disp_id]->GetLayerStack(&stack);
+    // Update the same stack onto real display.
+    hwc_display_[disp_id]->SetLayerStack(&stack);
+    // Read display has got layerstack. Update the fences.
+    hwc_display_[disp_id]->PostPowerMode();
+
+    power_state_transition_[disp_id] = false;
+  }
+
+  return 0;
 }
 
 Return<bool> HWCSession::isHDRSupported(uint32_t disp_id) {
@@ -718,7 +766,7 @@ Return<void> HWCSession::getDebugProperty(const hidl_string &prop_name,
   int32_t error = -EINVAL;
 
   vendor_prop_name += prop_name.c_str();
-  if (HWCDebugHandler::Get()->GetProperty(vendor_prop_name.c_str(), value) != kErrorNone) {
+  if (HWCDebugHandler::Get()->GetProperty(vendor_prop_name.c_str(), value) == kErrorNone) {
     result = value;
     error = 0;
   }
@@ -795,5 +843,50 @@ Return<bool> HWCSession::isBuiltInDisplay(uint32_t disp_id) {
   return false;
 }
 #endif  // DISPLAY_CONFIG_1_9
+
+#ifdef DISPLAY_CONFIG_1_10
+Return<void> HWCSession::getSupportedDSIBitClks(uint32_t disp_id,
+                                                getSupportedDSIBitClks_cb _hidl_cb) {
+  SCOPE_LOCK(locker_[disp_id]);
+  if (!hwc_display_[disp_id]) {
+    return Void();
+  }
+
+  std::vector<uint64_t> bit_clks;
+  hwc_display_[disp_id]->GetSupportedDSIClock(&bit_clks);
+
+  hidl_vec<uint64_t> hidl_bit_clks = bit_clks;
+  _hidl_cb(hidl_bit_clks);
+
+  return Void();
+}
+
+Return<uint64_t> HWCSession::getDSIClk(uint32_t disp_id) {
+  SCOPE_LOCK(locker_[disp_id]);
+  if (!hwc_display_[disp_id]) {
+    return 0;
+  }
+
+  uint64_t bit_clk = 0;
+  hwc_display_[disp_id]->GetDynamicDSIClock(&bit_clk);
+
+  return bit_clk;
+}
+
+Return<int32_t> HWCSession::setDSIClk(uint32_t disp_id, uint64_t bit_clk) {
+  SCOPE_LOCK(locker_[disp_id]);
+  if (!hwc_display_[disp_id]) {
+    return -1;
+  }
+
+  return hwc_display_[disp_id]->SetDynamicDSIClock(bit_clk);
+}
+
+Return<int32_t> HWCSession::setCWBOutputBuffer(const ::android::sp<IDisplayCWBCallback> &callback,
+                                               uint32_t disp_id, const Rect &rect,
+                                               bool post_processed, const hidl_handle& buffer) {
+  return -1;
+}
+#endif  // DISPLAY_CONFIG_1_10
 
 }  // namespace sdm

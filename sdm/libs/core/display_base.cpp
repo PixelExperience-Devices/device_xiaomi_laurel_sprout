@@ -578,7 +578,7 @@ DisplayError DisplayBase::SetDisplayState(DisplayState state, bool teardown,
   if (error == kErrorNone) {
     active_ = active;
     state_ = state;
-    comp_manager_->SetDisplayState(display_comp_ctx_, state);
+    comp_manager_->SetDisplayState(display_comp_ctx_, state, *release_fence);
   }
 
   return error;
@@ -1882,6 +1882,10 @@ bool DisplayBase::IsHdrMode(const AttrVal &attr) {
   }
 
   return false;
+}
+
+bool DisplayBase::CanSkipValidate() {
+  return comp_manager_->CanSkipValidate(display_comp_ctx_);
 }
 
 }  // namespace sdm

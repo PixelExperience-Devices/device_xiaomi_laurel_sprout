@@ -20,7 +20,9 @@
 #ifndef __HWC_SESSION_H__
 #define __HWC_SESSION_H__
 
-#ifdef DISPLAY_CONFIG_1_9
+#ifdef DISPLAY_CONFIG_1_10
+#include <vendor/display/config/1.10/IDisplayConfig.h>
+#elif DISPLAY_CONFIG_1_9
 #include <vendor/display/config/1.9/IDisplayConfig.h>
 #elif DISPLAY_CONFIG_1_8
 #include <vendor/display/config/1.8/IDisplayConfig.h>
@@ -48,12 +50,14 @@
 #include <display_config.h>
 #include <vector>
 #include <utility>
+#include <map>
 
 #include "hwc_callbacks.h"
 #include "hwc_layers.h"
 #include "hwc_display.h"
 #include "hwc_display_builtin.h"
 #include "hwc_display_pluggable.h"
+#include "hwc_display_dummy.h"
 #include "hwc_display_virtual.h"
 #include "hwc_display_pluggable_test.h"
 #include "hwc_color_manager.h"
@@ -63,7 +67,9 @@
 
 namespace sdm {
 
-#ifdef DISPLAY_CONFIG_1_9
+#ifdef DISPLAY_CONFIG_1_10
+using vendor::display::config::V1_10::IDisplayConfig;
+#elif DISPLAY_CONFIG_1_9
 using vendor::display::config::V1_9::IDisplayConfig;
 #elif DISPLAY_CONFIG_1_8
 using vendor::display::config::V1_8::IDisplayConfig;
@@ -84,8 +90,16 @@ using vendor::display::config::V1_1::IDisplayConfig;
 #else
 using vendor::display::config::V1_0::IDisplayConfig;
 #endif
+
+#ifdef DISPLAY_CONFIG_1_10
+// Need to be declarated for any version 10 or above.
+using vendor::display::config::V1_10::IDisplayCWBCallback;
+#endif
+
 using ::android::hardware::Return;
 using ::android::hardware::hidl_string;
+using android::hardware::hidl_handle;
+using ::android::hardware::hidl_vec;
 
 int32_t GetDataspaceFromColorMode(ColorMode mode);
 
@@ -147,8 +161,16 @@ class HWCSession : hwc2_device_t, HWCUEventListener, IDisplayConfig, public qCli
       return HWC2_ERROR_BAD_DISPLAY;
     }
 
-    SCOPE_LOCK(locker_[display]);
     HWCSession *hwc_session = static_cast<HWCSession *>(device);
+    {
+      // Power state transition start.
+      SCOPE_LOCK(power_state_[display]);
+      if (hwc_session->power_state_transition_[display]) {
+        display = hwc_session->map_hwc_display_.find(display)->second;
+      }
+    }
+
+    SCOPE_LOCK(locker_[display]);
     auto status = HWC2::Error::BadDisplay;
     if (hwc_session->hwc_display_[display]) {
       auto hwc_display = hwc_session->hwc_display_[display];
@@ -169,8 +191,16 @@ class HWCSession : hwc2_device_t, HWCUEventListener, IDisplayConfig, public qCli
       return HWC2_ERROR_BAD_DISPLAY;
     }
 
-    SCOPE_LOCK(locker_[display]);
     HWCSession *hwc_session = static_cast<HWCSession *>(device);
+    {
+      // Power state transition start.
+      SCOPE_LOCK(power_state_[display]);
+      if (hwc_session->power_state_transition_[display]) {
+        display = hwc_session->map_hwc_display_.find(display)->second;
+      }
+    }
+
+    SCOPE_LOCK(locker_[display]);
     auto status = HWC2::Error::BadDisplay;
     if (hwc_session->hwc_display_[display]) {
       status = HWC2::Error::BadLayer;
@@ -236,6 +266,8 @@ class HWCSession : hwc2_device_t, HWCUEventListener, IDisplayConfig, public qCli
                                 int32_t *out_support);
 
   static Locker locker_[HWCCallbacks::kNumDisplays];
+  static Locker power_state_[HWCCallbacks::kNumDisplays];
+  static Locker display_config_locker_;
 
  private:
   struct DisplayMapInfo {
@@ -269,6 +301,7 @@ class HWCSession : hwc2_device_t, HWCUEventListener, IDisplayConfig, public qCli
   void InitSupportedDisplaySlots();
   int GetDisplayIndex(int dpy);
   int CreatePrimaryDisplay();
+  void CreateDummyDisplay(hwc2_display_t client_id);
   int HandleBuiltInDisplays();
   int HandlePluggableDisplays(bool delay_hotplug);
   int HandleConnectedDisplays(HWDisplaysInfo *hw_displays_info, bool delay_hotplug);
@@ -361,6 +394,16 @@ class HWCSession : hwc2_device_t, HWCUEventListener, IDisplayConfig, public qCli
   Return<bool> isBuiltInDisplay(uint32_t disp_id) override;
 #endif
 
+#ifdef DISPLAY_CONFIG_1_10
+  Return<void> getSupportedDSIBitClks(uint32_t disp_id,
+                                      getSupportedDSIBitClks_cb _hidl_cb) override;
+  Return<uint64_t> getDSIClk(uint32_t disp_id) override;
+  Return<int32_t> setDSIClk(uint32_t disp_id, uint64_t bit_clk) override;
+  Return<int32_t> setCWBOutputBuffer(const ::android::sp<IDisplayCWBCallback> &callback,
+                                     uint32_t disp_id, const Rect &rect, bool post_processed,
+                                     const hidl_handle& buffer) override;
+#endif
+
   // QClient methods
   virtual android::status_t notifyCallback(uint32_t command, const android::Parcel *input_parcel,
                                            android::Parcel *output_parcel);
@@ -421,6 +464,7 @@ class HWCSession : hwc2_device_t, HWCUEventListener, IDisplayConfig, public qCli
   std::vector<DisplayMapInfo> map_info_pluggable_;  // Pluggable displays excluding primary
   std::vector<DisplayMapInfo> map_info_virtual_;    // Virtual displays
   std::vector<bool> is_hdr_display_;    // info on HDR supported
+  std::map <hwc2_display_t, hwc2_display_t> map_hwc_display_;  // Real and dummy display pairs.
   bool reset_panel_ = false;
   bool client_connected_ = false;
   bool new_bw_mode_ = false;
@@ -445,6 +489,9 @@ class HWCSession : hwc2_device_t, HWCUEventListener, IDisplayConfig, public qCli
   float set_max_lum_ = -1.0;
   float set_min_lum_ = -1.0;
   std::bitset<HWCCallbacks::kNumDisplays> pending_refresh_;
+  bool async_powermode_ = false;
+  bool power_state_transition_[HWCCallbacks::kNumDisplays] = {};  // +1 to account for primary.
+  std::bitset<HWCCallbacks::kNumDisplays> display_ready_;
 };
 
 }  // namespace sdm
