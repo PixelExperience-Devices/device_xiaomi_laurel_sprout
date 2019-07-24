@@ -147,7 +147,6 @@ class GnssAdapter : public LocAdapterBase {
     bool mGnssSvIdUsedInPosAvail;
     GnssSvMbUsedInPosition mGnssMbSvIdUsedInPosition;
     bool mGnssMbSvIdUsedInPosAvail;
-    GnssSignalTypeMask mGnssSignalType[GNSS_SV_MAX];
 
     /* ==== CONTROL ======================================================================== */
     LocationControlCallbacks mControlCallbacks;
@@ -360,7 +359,8 @@ public:
                                bool fromEngineHub=false);
     virtual void reportNmeaEvent(const char* nmea, size_t length);
     virtual void reportDataEvent(const GnssDataNotification& dataNotify, int msInWeek);
-    virtual bool requestNiNotifyEvent(const GnssNiNotification& notify, const void* data);
+    virtual bool requestNiNotifyEvent(const GnssNiNotification& notify, const void* data,
+                                      const LocInEmergency emergencyState);
     virtual void reportGnssMeasurementsEvent(const GnssMeasurements& gnssMeasurements,
                                                 int msInWeek);
     virtual void reportSvPolynomialEvent(GnssSvPolynomial &svPolynomial);
@@ -390,7 +390,8 @@ public:
     void reportSv(GnssSvNotification& svNotify);
     void reportNmea(const char* nmea, size_t length);
     void reportData(GnssDataNotification& dataNotify);
-    bool requestNiNotify(const GnssNiNotification& notify, const void* data);
+    bool requestNiNotify(const GnssNiNotification& notify, const void* data,
+                         const bool bInformNiAccept);
     void reportGnssMeasurementData(const GnssMeasurementsNotification& measurements);
     void reportGnssSvIdConfig(const GnssSvIdConfig& config);
     void reportGnssSvTypeConfig(const GnssSvTypeConfig& config);
