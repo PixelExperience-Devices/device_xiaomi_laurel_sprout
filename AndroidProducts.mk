@@ -14,7 +14,7 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/beast_laurel_sprout.mk
+    $(LOCAL_DIR)/syberia_laurel_sprout.mk
 	
 COMMON_LUNCH_CHOICES := \
-    beast_laurel_sprout-userdebug
+    syberia_laurel_sprout-userdebug

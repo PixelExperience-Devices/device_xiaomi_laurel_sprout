@@ -59,10 +59,6 @@ PRODUCT_STATIC_BOOT_CONTROL_HAL := \
 PRODUCT_PACKAGES += \
     BluetoothResCommon
 	
-# Board
-PRODUCT_USES_QCOM_HARDWARE := true
-PRODUCT_BOARD_PLATFORM := trinket
-
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1560
 TARGET_SCREEN_WIDTH := 720
@@ -86,7 +82,7 @@ PRODUCT_COPY_FILES += \
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-beast
+    $(LOCAL_PATH)/overlay-syberia
 
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal
@@ -102,7 +98,7 @@ PRODUCT_COPY_FILES += \
 
 # ANT+
 PRODUCT_PACKAGES += \
-    AntHalService \
+    AntHalService
 	
 # Device-specific settings
 PRODUCT_PACKAGES += \
@@ -162,10 +158,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     netutils-wrapper-1.0
 
-# OTA
-#PRODUCT_PACKAGES += \
-    Updates
-	
 # Placeholder
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/placeholder:system/etc/placeholder
