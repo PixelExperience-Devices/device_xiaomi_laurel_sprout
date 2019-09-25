@@ -132,7 +132,8 @@ PRODUCT_COPY_FILES += \
 # Init
 PRODUCT_PACKAGES += \
     init.qcom.rc \
-    init.recovery.qcom.rc
+    init.recovery.qcom.rc \
+    ueventd.qcom.rc
 	
 # IMS
 PRODUCT_PACKAGES += \
