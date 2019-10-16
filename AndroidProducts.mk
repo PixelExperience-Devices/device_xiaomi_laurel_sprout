@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2019 BeastROMs
+# Copyright (C) 2019 PixelExperience project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/syberia_laurel_sprout.mk
-	
+    $(LOCAL_DIR)/aosp_laurel_sprout.mk
+
 COMMON_LUNCH_CHOICES := \
-    syberia_laurel_sprout-userdebug
+    aosp_laurel_sprout-userdebug

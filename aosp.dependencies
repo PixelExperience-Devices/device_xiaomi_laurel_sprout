@@ -1,0 +1,26 @@
+[
+  {
+    "repository": "device_xiaomi_laurel_sprout",
+    "target_path": "device/xiaomi/laurel_sprout"
+  },
+  {
+    "repository": "kernel_xiaomi_laurel_sprout",
+    "target_path": "kernel/xiaomi/laurel_sprout"
+  },
+  {
+    "repository": "vendor_xiaomi_laurel_sprout",
+    "target_path": "vendor/xiaomi/laurel_sprout"
+  },
+  {
+    "repository": "android_packages_resources_devicesettings",
+    "target_path": "packages/resources/devicesettings",
+    "branch": "lineage-17.0",
+    "remote": "lineage"
+  },
+  {
+    "repository": "android_vendor_interfaces",
+    "target_path": "vendor/interfaces",
+    "branch": "10",
+    "remote": "Beast"
+  }
+]

@@ -33,13 +33,13 @@ AB_OTA_PARTITIONS += \
     dtbo \
     system \
     vbmeta
-	
+
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
     POSTINSTALL_PATH_system=system/bin/otapreopt_script \
     FILESYSTEM_TYPE_system=ext4 \
     POSTINSTALL_OPTIONAL_system=true
-	
+
 #A/B related packages
 PRODUCT_PACKAGES += \
     update_engine_client
@@ -58,11 +58,11 @@ PRODUCT_PACKAGES_DEBUG += \
 #    libcutils \
 #    libgptutils \
 #    libz
-	
+
 # Bluetooth
 PRODUCT_PACKAGES += \
     BluetoothResCommon
-	
+
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1560
 TARGET_SCREEN_WIDTH := 720
@@ -78,7 +78,7 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_WHITELIST += \
 PRODUCT_ARTIFACT_PATH_REQUIREMENT_WHITELIST += \
     system/product/% \
     system/product_services/%
-	
+
 # GSI specific tasks on boot
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/skip_mount.cfg:system/etc/init/config/skip_mount.cfg
@@ -86,7 +86,7 @@ PRODUCT_COPY_FILES += \
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-syberia
+    $(LOCAL_PATH)/overlay-pixel
 
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal
@@ -96,14 +96,14 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
     libaacwrapper
-	
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_policy_configuration.xml:system/etc/audio_policy_configuration.xml
 
 # ANT+
 PRODUCT_PACKAGES += \
     AntHalService
-	
+
 # Device-specific settings
 PRODUCT_PACKAGES += \
     XiaomiParts
@@ -113,13 +113,13 @@ PRODUCT_PACKAGES += \
     libdisplayconfig \
     libqdMetaData.system \
     libvulkan
-	
+
 # FM
 #PRODUCT_PACKAGES += \
     FM2 \
     libqcomfm_jni \
     qcom.fmradio
-	
+
 #PRODUCT_BOOT_JARS += \
     qcom.fmradio
 
@@ -138,12 +138,12 @@ PRODUCT_PACKAGES += \
     init.qcom.rc \
     init.recovery.qcom.rc \
     ueventd.qcom.rc
-	
+
 # IMS
 PRODUCT_PACKAGES += \
     ims-ext-common \
     ims_ext_common.xml
-	
+
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.ims.xml:system/etc/permissions/android.hardware.telephony.ims.xml
 
@@ -154,7 +154,7 @@ PRODUCT_COPY_FILES += \
 # Lights
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.xiaomi_trinket
-	
+
 # Media
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media_profiles_vendor.xml:system/etc/media_profiles_vendor.xml
