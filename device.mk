@@ -44,16 +44,20 @@ AB_OTA_POSTINSTALL_CONFIG += \
 PRODUCT_PACKAGES += \
     update_engine_client
 
+PRODUCT_PACKAGES += \
+     bootctrl.trinket \
+     bootctrl.trinket.recovery
+
 #Boot control HAL test app
 PRODUCT_PACKAGES_DEBUG += \
     bootctl \
     update_engine_client
 
-PRODUCT_STATIC_BOOT_CONTROL_HAL := \
-    bootctrl.trinket \
-    libcutils \
-    libgptutils \
-    libz
+#PRODUCT_STATIC_BOOT_CONTROL_HAL := \
+#    bootctrl.trinket \
+#    libcutils \
+#    libgptutils \
+#    libz
 	
 # Bluetooth
 PRODUCT_PACKAGES += \
@@ -182,3 +186,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_BOOT_JARS += \
     telephony-ext
 
+# Boot control HAL
+ PRODUCT_PACKAGES += \
+     android.hardware.boot@1.0-impl.recovery:64 \
