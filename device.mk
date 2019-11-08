@@ -125,7 +125,7 @@ PRODUCT_PACKAGES += \
 
 # Fingerprint
 PRODUCT_PACKAGES += \
-    vendor.lineage.biometrics.fingerprint.inscreen@1.0-service.xiaomi_trinket
+    lineage.biometrics.fingerprint.inscreen@1.0-service.xiaomi_trinket
 
 #Hotspot
 PRODUCT_COPY_FILES += \
