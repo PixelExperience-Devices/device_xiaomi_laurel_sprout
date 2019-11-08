@@ -16,7 +16,6 @@
 #
 
 BOARD_VENDOR := xiaomi
-
 DEVICE_PATH := device/xiaomi/laurel_sprout
 
 # A/B
@@ -156,6 +155,7 @@ PRIVATE_EXCLUDE_BUILD_TEST := true
 #BOARD_PLAT_PUBLIC_SEPOLICY_DIR += \
 #    device/qcom/sepolicy/generic/public \
 #    device/qcom/sepolicy/qva/public
+
 
 # Temporary Sepolicy
 BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/temp
