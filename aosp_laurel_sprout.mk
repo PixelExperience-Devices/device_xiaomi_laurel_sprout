@@ -34,7 +34,7 @@ PRODUCT_MODEL := MI A3
 PRODUCT_MANUFACTURER := Xiaomi
 
 
-BUILD_FINGERPRINT := "Xiaomi/laurel_sprout_eea/laurel_sprout:9/PKQ1.190416.001/V10.3.6.0.PFQMIXM:user/release-keys"
+BUILD_FINGERPRINT := "google/walleye/walleye:8.1.0/OPM1.171019.021/4565141:user/release-keys"
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="laurel_sprout-user 9 PKQ1.190416.001 V10.3.6.0.PFQMIXM release-keys" \
