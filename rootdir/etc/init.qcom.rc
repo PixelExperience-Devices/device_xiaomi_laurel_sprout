@@ -20,6 +20,13 @@ service vendor.ss_ramdump_local /vendor/bin/subsystem_ramdump
     group system
     disabled
 	
+service charger /system/bin/charger
+    class charger
+    user system
+    group system graphics input
+    capabilities SYS_BOOT
+    seclabel u:r:healthd:s0
+
 on property:init.svc.vendor.cnss_diag=running
     stop vendor.cnss_diag
 
