@@ -12,6 +12,9 @@ lib64/vendor.qti.hardware.data.latency@1.0.so
 lib64/vendor.qti.latency@2.0.so
 -priv-app/CNEService/CNEService.apk
 
+# Power-off charging daemon
+-sbin/charger:sbin/chargeonlymode;rootfs|664dfa548b81cac348f1699222160f8d2b4d247c
+
 # DPM
 bin/dpmd
 etc/dpm/dpm.conf
