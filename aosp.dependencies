@@ -1,3 +1,4 @@
+
 [  
    {  
       "remote":"github",
@@ -16,5 +17,11 @@
       "repository":"LineageOS/android_packages_resources_devicesettings",
       "target_path":"packages/resources/devicesettings",
       "branch":"lineage-17.0"
-   }
+  },
+  {
+    "repository": "packages_apps_WallpapersBReel2019",
+    "target_path": "packages/apps/WallpapersBReel2019",
+    "branch": "ten",
+    "remote": "pixel-gitlab"
+  }
 ]

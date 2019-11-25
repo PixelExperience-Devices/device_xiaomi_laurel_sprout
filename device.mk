@@ -190,3 +190,8 @@ PRODUCT_BOOT_JARS += \
 # Boot control HAL
  PRODUCT_PACKAGES += \
      android.hardware.boot@1.0-impl.recovery:64 \
+
+# Wallpapers
+PRODUCT_PACKAGES += \
+    WallpapersBReel2019
+
