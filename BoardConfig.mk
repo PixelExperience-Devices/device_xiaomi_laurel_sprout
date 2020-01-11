@@ -139,6 +139,9 @@ BOARD_ROOT_EXTRA_SYMLINKS := \
     /vendor/dsp:/dsp \
     /vendor/firmware_mnt:/firmware
 
+# SurfaceFlinger
+TARGET_USE_AOSP_SURFACEFLINGER := true
+
 # RIL
 TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
 
