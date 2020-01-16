@@ -1,22 +1,20 @@
 
 [  
    {  
-      "remote":"github",
-      "repository":"Prakaship78/kernel_xiaomi_laurel_sprout",
+      "repository":"kernel_xiaomi_laurel_sprout",
       "target_path":"kernel/xiaomi/laurel_sprout",
-      "branch":"10"
+      "branch":"ten"
    },
    {  
-      "remote":"github",
-      "repository":"BeastRoms-Devices/vendor_xiaomi_laurel_sprout",
-      "target_path":"vendor/xiaomi/laurel_sprout",
-      "branch":"10"
+      "repository":" vendor_xiaomi",
+      "target_path":"vendor/xiaomi",
+      "branch":"ten"
    },
    {  
-      "remote":"github",
-      "repository":"LineageOS/android_packages_resources_devicesettings",
+      "remote":"lineage",
+      "repository":"android_packages_resources_devicesettings",
       "target_path":"packages/resources/devicesettings",
-      "branch":"lineage-17.0"
+      "branch":"lineage-17.1"
   },
   {
     "repository": "packages_apps_WallpapersBReel2019",
