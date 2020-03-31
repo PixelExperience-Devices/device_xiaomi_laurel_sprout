@@ -159,14 +159,15 @@ product/lib64/vendor.qti.imsrtpservice@2.0.so
 product/lib64/vendor.qti.imsrtpservice@2.1.so
 -product/priv-app/ims/ims.apk
 
+# Media
+-lib/libplatformconfig.so
+-lib64/libplatformconfig.so
+
 # Perf
 lib/libdolphin.so
 lib/libqti-at.so
 lib64/libdolphin.so
 lib64/libqti-at.so
-
-# Power-off charging daemon
-bin/charger
 
 # RIL
 etc/permissions/privapp-permissions-qti.xml
@@ -235,8 +236,3 @@ lib/libwfduibcsrcinterface.so
 -priv-app/WfdService/WfdService.apk
 product/lib/vendor.qti.hardware.wifidisplaysession@1.0.so
 product/lib64/vendor.qti.hardware.wifidisplaysession@1.0.so
-
-#QTI AV Enhancements
-lib/libavenhancements.so
-lib/libqct_resampler.so
-lib64/libavenhancements.so
