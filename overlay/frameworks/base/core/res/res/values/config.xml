@@ -144,7 +144,9 @@
 
     <!-- Height of the status bar -->
     <dimen name="rounded_corner_radius_bottom">128.0px</dimen>
+    <dimen name="rounded_corner_radius_bottom_adjustment">46.0px</dimen>
     <dimen name="rounded_corner_radius_top">144.0px</dimen>
+    <dimen name="rounded_corner_radius_top_adjustment">79.0px</dimen>
     <dimen name="status_bar_height_landscape">56px</dimen>
     <dimen name="status_bar_height_portrait">70px</dimen>
 
