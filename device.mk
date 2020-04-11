@@ -212,4 +212,4 @@ PRODUCT_PACKAGES_DEBUG += \
 
 # Wallpapers
 PRODUCT_PACKAGES += \
-    WallpapersBReel2019
+    PixelLiveWallpaperPrebuilt
