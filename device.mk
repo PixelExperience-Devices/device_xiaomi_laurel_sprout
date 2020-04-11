@@ -141,7 +141,8 @@ PRODUCT_PACKAGES += \
     fs_none \
     init.recovery.qcom.rc \
     ueventd.qcom.rc \
-    init.qcom.usb.sh
+    init.qcom.usb.sh \
+    init.safailnet.rc
 
 # IMS
 PRODUCT_PACKAGES += \

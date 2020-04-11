@@ -1,3 +1,5 @@
+import /system/etc/init/init.safailnet.rc
+
 on init
     # set default schedTune value for foreground/top-app
     # Set default values for foreground and top-app stune
