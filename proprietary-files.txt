@@ -1,3 +1,5 @@
+# Proprietary files - from laurel_sprout stock package V11.0.15.0.QFQMIXM global version, unless pinned
+
 # ADSP
 vendor/bin/adsprpcd
 vendor/lib/libadsp_default_listener.so
