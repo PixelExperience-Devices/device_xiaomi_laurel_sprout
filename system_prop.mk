@@ -117,7 +117,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Graphics
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.enable_hwc_vds=0 \
-    debug.sf.latch_unsignaled=1 \
+    debug.sf.latch_unsignaled=0 \
     persist.sys.force_sw_gles=1 \
     ro.build.display.wtid.ato=SW_S88512AA1_V001_M13_XM_F9S_USR_ATO \
     ro.build.display.wtid.miui=SW_S88512AA1_V001_M13_XM_F9S_USR_MP \
