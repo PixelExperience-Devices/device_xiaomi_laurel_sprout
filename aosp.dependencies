@@ -1,15 +1,13 @@
 [  
    {  
-      "repository": "pqhaz/kernel_xiaomi_laurel_sprout",
+      "repository": "kernel_xiaomi_laurel_sprout",
       "target_path": "kernel/xiaomi/laurel_sprout",
-      "branch": "ten",
-      "remote": "github"
+      "branch": "ten"
    },
    {  
-      "repository": "nullbytepl/vendor_xiaomi_laurel_sprout",
-      "target_path": "vendor/xiaomi/laurel_sprout",
-      "branch": "ten",
-      "remote": "github"
+      "repository": "vendor_xiaomi",
+      "target_path": "vendor/xiaomi",
+      "branch": "ten"
    },
    {
       "repository": "packages_apps_PixelLiveWallpaper",
