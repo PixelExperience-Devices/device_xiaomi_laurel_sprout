@@ -63,4 +63,6 @@ void vendor_load_properties()
 
     property_override("ro.bluetooth.a2dp_offload.supported", "false");
     property_override("vendor.audio.feature.a2dp_offload.enable", "false");
+
+    property_override("debug.sf.hw", "1");
 }
