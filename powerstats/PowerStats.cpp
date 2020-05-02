@@ -167,7 +167,12 @@ Return<void> PowerStats::getPowerEntityStateResidencyData(
         // get the results if we have not already done so.
         if (stateResidencies.find(id) == stateResidencies.end()) {
             if (!dataProvider->second->getResults(stateResidencies)) {
-                filesystemError = true;
+                LOG(INFO) << "trying getResults() again";
+                if (!dataProvider->second->getResults(stateResidencies)) {
+                    filesystemError = true;
+                } else {
+                    LOG(INFO) << "getResults() retry success";
+                }
             }
         }
 
