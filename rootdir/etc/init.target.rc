@@ -181,8 +181,8 @@ on boot
     write /dev/cpuset/system-background/cpus 0-7
 
 # D2TW
-    chown system system /proc/tp_gesture
-    chmod 0660 /proc/tp_gesture
+    chown system system /dev/input/event2
+    chmod 0660 /dev/input/event2
 
 # access permissions for FPC service
    chown system system /sys/bus/platform/devices/soc/soc:fpc1020/irq
@@ -194,6 +194,24 @@ on boot
 
 # Thermal Profile
     write /sys/class/thermal/thermal_message/sconfig 0
+
+# Goodix
+   mkdir /data/vendor/goodix
+   chmod 0777 /data/vendor/goodix
+   chown system system /data/vendor/goodix
+   mkdir /data/vendor/goodix/gf_data
+   mkdir /data/vendor/goodix/gf_cali
+   mkdir /data/vendor/goodix/factory_test
+   chown system system /data/vendor/goodix/gf_data
+   chown system system /data/vendor/goodix/gf_cali
+   chown system system /data/vendor/goodix/factory_test
+   chmod 0777 /sys/class/drm/card0-DSI-1/disp_param
+   chmod 0777 /sys/class/touch/tp_dev/fod_status
+   chown system system /sys/class/drm/card0-DSI-1/disp_param
+   chmod 0660 /sys/class/drm/card0-DSI-1/acl
+   chown system system /sys/class/drm/card0-DSI-1/acl
+   chmod 0440 /sys/class/drm/card0-DSI-1/white_read
+   chown system system /sys/class/drm/card0-DSI-1/white_read
 
 #USB controller configuration
     setprop vendor.usb.rndis.func.name "gsi"
