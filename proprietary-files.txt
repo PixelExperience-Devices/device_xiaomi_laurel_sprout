@@ -2850,13 +2850,11 @@ vendor/lib64/libSecureUILib.so
 vendor/lib64/libStDrvInt.so
 vendor/lib64/libdrmfs.so
 vendor/lib64/libdrmtime.so
-vendor/lib64/libops.so
 vendor/lib64/libqisl.so
 vendor/lib64/librpmb.so
 vendor/lib64/libsecureui.so
 vendor/lib64/libsecureui_svcsock.so
 vendor/lib64/libsi.so
-vendor/lib64/libspl.so
 vendor/lib64/libssd.so
 vendor/lib/libQSEEComAPI.so
 vendor/lib/libdrmfs.so
@@ -3611,7 +3609,7 @@ vendor/etc/thermal-engine.conf
 vendor/lib64/libthermalfeature.so
 
 # Time services
-vendor/bin/move_time_data.sh
+bin/move_time_data.sh
 vendor/bin/time_daemon
 vendor/etc/init/init.time_daemon.rc
 vendor/lib/libtime_genoff.so
