@@ -145,10 +145,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.hardware.keystore_desede=true
 
-# LCD Density
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.sf.lcd_density=440
-
 # NFC
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.se.type=HCE,UICC
