@@ -3044,20 +3044,24 @@ vendor/lib/libpvr.so
 vendor/lib/librs_adreno.so
 vendor/lib/librs_adreno_sha1.so
 
-# Graphics (SDM) - from LA.UM.8.1.r1-14500-sm8150.0
-vendor/lib64/libdisp-aba.so|a7f8975e5a323100bb9e5feb14085c0c4479ce96
-vendor/lib64/libdpps.so|dc21df7b0af8f05f0f0d4c39e2c103c7989ece8b
-vendor/lib64/libdisplayqos.so|8e5f13a5b7ea0efa8db2902c8719380d710bc857
-vendor/lib64/libhdr_tm.so|a04a0abf52d940ddb4916e74d48cc2b16526e355
-vendor/lib64/libqseed3.so|3fb480721b26a2df0a2a96359814ef37a5da9148
-vendor/lib64/libsdedrm.so|21ef252babf0bba0d79a22fa3c67a7ec15bba5b4
-vendor/lib64/libsdm-color.so|9d301706c16ce768a3fe72e9990f2d8799aeb9f6
-vendor/lib64/libsdm-colormgr-algo.so|98a55014ebce7dd77319745c118af8368dec5e27
-vendor/lib64/libsdm-diag.so|f080993703d425a337faaa5d2cc3c05119db6ac1
-vendor/lib64/libsdm-disp-vndapis.so|d928e16612715d7a416d8c3b7920311bd9a93fed
-vendor/lib64/libsdmextension.so|fc9994028e62ed31223b9a494c4bf4a469b855a9
-vendor/lib64/libtinyxml.so|6b469580f781995a2e78fe1b5c19930040a8798e
-vendor/lib64/libtinyxml2_1.so|92adc9b612766cda6fa50f4c36d046b1a6da0816
+# Graphics (Hardware)
+vendor/lib/libsdmcore.so
+vendor/lib64/libsdmcore.so
+
+# Graphics (SDM)
+vendor/lib64/libdisp-aba.so
+vendor/lib64/libdisplayqos.so
+vendor/lib64/libdpps.so
+vendor/lib64/libhdr_tm.so
+vendor/lib64/libqseed3.so
+vendor/lib64/libsdedrm.so
+vendor/lib64/libsdm-color.so
+vendor/lib64/libsdm-colormgr-algo.so
+vendor/lib64/libsdm-diag.so
+vendor/lib64/libsdm-disp-vndapis.so
+vendor/lib64/libsdmextension.so
+vendor/lib64/libtinyxml.so
+vendor/lib64/libtinyxml2_1.so
 
 # Graphics (Vulkan)
 vendor/lib/hw/vulkan.trinket.so
