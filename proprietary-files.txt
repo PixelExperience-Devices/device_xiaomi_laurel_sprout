@@ -100,7 +100,6 @@ vendor/lib64/vendor.qti.hardware.bluetooth_sar@1.0.so
 vendor/lib64/vendor.qti.hardware.btconfigstore@1.0.so
 
 # Camera
-vendor/bin/mm-qcamera-app
 vendor/camera/fonts/MFYueYuan-Regular.ttf
 vendor/camera/fonts/MI+LanTing_GB+Outside+YS_V2.3_20160322.ttf
 vendor/camera/fonts/MIUI_Time.ttf
@@ -230,6 +229,7 @@ vendor/lib/libactuator_lc898212xd_qc2002.so
 vendor/lib/libactuator_lc898217xc.so
 vendor/lib/libactuator_pseudo.so
 vendor/lib/libactuator_rohm_bu64243gwz.so
+vendor/lib/libalCFR.so
 vendor/lib/libalLDC.so
 vendor/lib/libalhLDC.so
 vendor/lib/libarcsoft_beautyshot.so
@@ -2435,7 +2435,9 @@ vendor/lib/libchromatix_s5k5e9yu05_mono_snapshot_isp.so
 vendor/lib/libchromatix_s5k5e9yu05_mono_zsl_preview.so
 vendor/lib/libchromatix_s5k5e9yu05_mono_zsl_video.so
 vendor/lib/libdepthmapwrapper.so
+vendor/lib/libdng_sdkvendor.so
 vendor/lib/libflash_pmic.so
+vendor/lib/libft2vendor.so
 vendor/lib/libgui_vendor.so
 vendor/lib/libhal_dbg.so
 vendor/lib/libjpegdhw.so
@@ -2443,6 +2445,7 @@ vendor/lib/libjpegdmahw.so
 vendor/lib/libjpegehw.so
 vendor/lib/libmialgo_sd.so
 vendor/lib/libmibokeh_660.so
+vendor/lib/libmm-qcamera.so 
 vendor/lib/libmmcamera2_c2d_module.so
 vendor/lib/libmmcamera2_cpp_module.so
 vendor/lib/libmmcamera2_frame_algorithm.so
@@ -2649,6 +2652,7 @@ vendor/lib/libsymphonypower.so
 vendor/lib/libvideoutils.so
 vendor/lib/libvidhance.so
 vendor/lib/mibokeh_660_opencl.bin
+vendor/lib/miwatermark.so
 vendor/lib64/libcapiv2svacnn.so
 vendor/lib64/libcapiv2vop.so
 vendor/lib64/libmmcamera2_frame_algorithm.so
@@ -2668,6 +2672,7 @@ vendor/lib64/libsns_low_lat_stream_stub.so
 vendor/lib64/libsnsapi.so
 vendor/lib64/libsnsdiaglog.so
 vendor/lib64/libswvdec.so
+vendor/lib64/libsysmon_cdsp_skel.so 
 
 # Camera-firmware
 vendor/firmware/cpp_firmware_v1_10_0.fw
