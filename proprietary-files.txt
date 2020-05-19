@@ -3503,6 +3503,12 @@ vendor/lib64/libssc_default_listener.so
 vendor/lib64/sensors.ssc.so
 vendor/lib64/vendor.qti.hardware.sensorscalibrate@1.0.so
 
+# Sensors (Hardware)
+vendor/bin/hw/android.hardware.sensors@2.0-service
+vendor/etc/init/android.hardware.sensors@2.0-service.rc
+vendor/lib/android.hardware.sensors@2.0-impl.so
+vendor/lib64/android.hardware.sensors@2.0-impl.so
+
 # Sensor-Configs
 vendor/etc/sensors/config/ak991x_dri_0.json
 vendor/etc/sensors/config/bmi160_0.json
