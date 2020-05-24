@@ -2452,7 +2452,6 @@ vendor/lib/libdepthmapwrapper.so
 vendor/lib/libdng_sdkvendor.so
 vendor/lib/libflash_pmic.so
 vendor/lib/libft2vendor.so
-vendor/lib/libgui_vendor.so
 vendor/lib/libhal_dbg.so
 vendor/lib/libjpegdhw.so
 vendor/lib/libjpegdmahw.so
