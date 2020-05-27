@@ -478,7 +478,7 @@
         </interface>
         <fqname>@1.0::IDisplayPostproc/default</fqname>
     </hal>
-    <!--<hal format="hidl">
+    <hal format="hidl">
         <name>vendor.lineage.livedisplay</name>
         <transport>hwbinder</transport>
         <version>2.0</version> 
@@ -487,7 +487,7 @@
             <instance>default</instance>
         </interface>
         <fqname>@2.0::IPictureAdjustment/default</fqname>
-    </hal> -->
+    </hal>
     <hal format="hidl">
         <name>vendor.lineage.trust</name>
         <transport>hwbinder</transport>
