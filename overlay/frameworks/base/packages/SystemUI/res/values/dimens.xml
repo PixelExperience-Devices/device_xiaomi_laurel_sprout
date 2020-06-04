@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
- <resources>
-     <!-- Bottom margin size when fingerprint in display is active -->
-     <dimen name="keyguard_indication_margin_bottom_fingerprint_in_display">128dp</dimen>
- </resources>
+<resources>
+    <!-- The minimum bottom margin of the keyguard security container -->
+    <dimen name="kg_security_container_min_bottom_margin">250px</dimen>
+</resources>
