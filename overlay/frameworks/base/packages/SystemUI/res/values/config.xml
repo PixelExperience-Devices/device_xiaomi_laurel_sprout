@@ -35,5 +35,8 @@
 
     <!-- Whether to disable assist hint on lockscreen -->
     <bool name="config_disableAssistHintOnLockscreen">true</bool>
+
+    <!-- Color of the FOD view -->
+    <color name="config_fodColor">#00ffff</color>
 </resources>
 
