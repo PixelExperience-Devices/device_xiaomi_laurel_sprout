@@ -26,6 +26,9 @@ $(call inherit-product, device/xiaomi/sm6125-common/common.mk)
 
 DEVICE_PATH := device/xiaomi/laurel_sprout
 
+# Inherit properties.mk
+$(call inherit-product, $(DEVICE_PATH)/properties.mk)
+
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
