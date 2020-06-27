@@ -14,12 +14,16 @@
 // limitations under the License.
 //
 
-cc_library_static {
+xiaomi_trinket_init_library_static {
     name: "libinit_trinket",
     recovery_available: true,
-    srcs: ["init_trinket.cpp"],
+    srcs: [
+        "init_trinket.cpp",
+        "DeviceLibinit.cpp"
+    ],
     include_dirs: [
         "system/core/base/include",
-        "system/core/init"
+        "system/core/init",
+        "device/xiaomi/sm6125-common"
     ]
 }
