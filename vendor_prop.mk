@@ -5,7 +5,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.dex2oat-threads=8 \
     dalvik.vm.image-dex2oat-filter=speed \
     ro.sys.fw.dex2oat_thread_count=8 \
-    ro.vendor.qti.am.reschedule_service=true
+    ro.vendor.qti.am.reschedule_service=true \
+    pm.dexopt.ab-ota=speed-profile \
+    dalvik.vm.image-dex2oat-threads=8
 
 # ACDB override
 PRODUCT_PROPERTY_OVERRIDES += \

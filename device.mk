@@ -66,6 +66,12 @@ PRODUCT_PACKAGES_DEBUG += \
 TARGET_SCREEN_HEIGHT := 1560
 TARGET_SCREEN_WIDTH := 720
 
+# Dex
+PRODUCT_PACKAGES += \
+     cppreopts.sh
+PRODUCT_PROPERTY_OVERRIDES += \
+     ro.cp_system_other_odex=1
+
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
