@@ -507,6 +507,7 @@ PRODUCT_BOOT_JARS += \
 
 # Xiaomi
 PRODUCT_PACKAGES += \
+    XiaomiDoze \
     XiaomiParts
 
 # Inherit the proprietary files
