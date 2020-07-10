@@ -5,9 +5,10 @@
       "branch": "ten"
    },
    {  
-      "repository": "vendor_xiaomi",
-      "target_path": "vendor/xiaomi",
-      "branch": "ten"
+      "repository": "vendor_xiaomi_laurel_sprout",
+      "target_path": "vendor/xiaomi/laurel_sprout",
+      "branch": "ten",
+      "remote": "pixel-devices-bitbucket"
    },
    {
       "repository": "packages_apps_PixelLiveWallpaper",
