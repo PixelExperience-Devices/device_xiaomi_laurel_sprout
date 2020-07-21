@@ -59,7 +59,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.audio.feature.hfp.enable=true \
     vendor.audio.feature.hifi_audio.enable=true \
     vendor.audio.feature.hwdep_cal.enable=false \
-    vendor.audio.feature.incall_music.enable=false \
+    vendor.audio.feature.incall_music.enable=true \
     vendor.audio.feature.multi_voice_session.enable=true \
     vendor.audio.feature.keep_alive.enable=false \
     vendor.audio.feature.kpi_optimize.enable=true \
@@ -116,6 +116,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.surface_flinger.protected_contents=true \
     ro.surface_flinger.vsync_event_phase_offset_ns=2000000 \
     ro.surface_flinger.vsync_sf_event_phase_offset_ns=6000000 \
+    ro.surface_flinger.has_wide_color_display=true \
+    ro.surface_flinger.use_color_management=true \
     ro.vendor.display.cabl=0 \
     vendor.display.disable_skip_validate=1 \
     vendor.display.enable_default_color_mode=1 \
@@ -142,7 +144,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Netflix
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    ro.netflix.bsp_rev=Q660-13149-1
+    ro.netflix.bsp_rev=Q6125-17995-1
 
 # Perf
 PRODUCT_PROPERTY_OVERRIDES += \
