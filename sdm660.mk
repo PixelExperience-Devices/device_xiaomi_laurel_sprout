@@ -215,7 +215,6 @@ PRODUCT_PACKAGES += \
     android.hardware.broadcastradio@1.0-impl
 
 # FM
-ifeq ($(BOARD_HAVE_QCOM_FM),true)
 PRODUCT_PACKAGES += \
     FM2 \
     libqcomfm_jni \
@@ -224,7 +223,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_BOOT_JARS += \
     qcom.fmradio
-endif
 
 # fwk-detect
 PRODUCT_PACKAGES += \

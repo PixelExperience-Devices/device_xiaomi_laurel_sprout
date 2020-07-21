@@ -75,7 +75,7 @@ class Updater:
         self.write()
 
 
-for file in ['proprietary-files.txt', 'proprietary-files-fm.txt']:
+for file in ['proprietary-files.txt']:
     updater = Updater(file)
     if len(sys.argv) == 2 and sys.argv[1] == '-c':
         updater.cleanup()
