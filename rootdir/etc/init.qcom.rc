@@ -42,10 +42,6 @@ on early-init
     chown system graphics /sys/kernel/debug/dri/0/debug/recovery_dbgbus
     chown system graphics /sys/kernel/debug/dri/0/debug/recovery_vbif_dbgbus
 
-    # Change ownership of sw_sync node
-    chown system graphics /sys/kernel/debug/sync/sw_sync
-    chmod 0666 /sys/kernel/debug/sync/sw_sync
-
     chown root system /dev/kmsg
     chmod 0620 /dev/kmsg
     # Load WIGIG platform driver
@@ -66,7 +62,6 @@ on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
     # Allow subsystem (modem etc) debugging
-    write /sys/kernel/debug/bootkpi/kpi_values "M - Start adsp"
     write /sys/kernel/boot_adsp/boot 1
     write /sys/kernel/boot_cdsp/boot 1
     write /sys/devices/virtual/npu/msm_npu/boot 1
@@ -94,6 +89,8 @@ on early-boot
     chown system system /mnt/vendor/persist/sensors/registry/sns_reg_config
     chown system system /mnt/vendor/persist/sensors/registry/sns_reg_version
     chown system system /mnt/vendor/persist/sensors/registry/config
+    chown system system /vendor/etc/camera/goldResult_586.bin
+    chown system system /vendor/etc/camera/goldResult_582.bin
     chmod 0664 /mnt/vendor/persist/sensors/sensors_settings
 
     chown system system /mnt/vendor/persist/data/pfm/licenses
@@ -138,14 +135,15 @@ on boot
     mkdir /dev/socket/qmux_radio 0770 radio radio
     chmod 2770 /dev/socket/qmux_radio
 
-    mkdir /persist/drm 0770 system system
+    mkdir /mnt/vendor/persist/drm 0770 system system
     mkdir /mnt/vendor/persist/bluetooth 0770 bluetooth bluetooth
-    mkdir /persist/misc 0770 system system
+    mkdir /mnt/vendor/persist/misc 0770 system system
     mkdir /mnt/vendor/persist/alarm 0770 system system
     mkdir /mnt/vendor/persist/time 0770 system system
     mkdir /mnt/vendor/persist/secnvm 0770 system system
     mkdir /mnt/vendor/persist/iar_db 0770 system system
     mkdir /mnt/vendor/spunvm 0770 system system
+    mkdir /mnt/vendor/persist/audio 0770 system audio
 
     #Create WIGIG socket area
     mkdir /dev/socket/wigig 0770 wifi wifi
@@ -247,7 +245,7 @@ on post-fs-data
     mkdir /data/vendor/qtee 0770 system system
 
     #Create folder of camera
-    mkdir /data/vendor/camera 0770 camera camera
+    mkdir /data/vendor/camera 0775 camera camera
 
 
     #Create directory for tftp
@@ -266,6 +264,7 @@ on post-fs-data
     mkdir /data/vendor/wifi/wpa_supplicant 0770 wifi wifi
     mkdir /data/vendor/wifi/wigig_hostapd 0770 wifi wifi
     mkdir /data/vendor/wifi/wpa 0770 wifi wifi
+    mkdir /data/vendor/wlan_logs 0770 system wifi
     mkdir /data/vendor/wifi/wpa/sockets 0770 wifi wifi
 
     # Create the directories used by WiGig Sensing
@@ -1089,6 +1088,7 @@ service vendor.audio-hal-2-0 /vendor/bin/hw/android.hardware.audio@2.0-service
     # audioflinger restarts itself when it loses connection with the hal
     # and its .rc file has an "onrestart restart audio-hal" rule, thus
     # an additional auto-restart from the init process isn't needed.
+    socket audio_hw_socket seqpacket 0666 system system
     oneshot
     interface android.hardware.audio@5.0::IDevicesFactory default
     interface android.hardware.audio@4.0::IDevicesFactory default
