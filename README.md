@@ -1,4 +1,4 @@
-This repository contains common device configuration for Xiaomi sdm660-based devices
+This repository contains common device configuration for Xiaomi sm6125-based devices
 
 ## Copyright
 

@@ -22,17 +22,17 @@
 # definition file).
 #
 
-COMMON_PATH := device/xiaomi/sdm660-common
+COMMON_PATH := device/xiaomi/sm6125-common
 
 BOARD_VENDOR := xiaomi
 
 # Bootloader
-TARGET_BOOTLOADER_BOARD_NAME := sdm660
+TARGET_BOOTLOADER_BOARD_NAME := trinket
 TARGET_NO_BOOTLOADER := true
 
 # Platform
-TARGET_BOARD_PLATFORM := sdm660
-TARGET_BOARD_PLATFORM_GPU := qcom-adreno512
+TARGET_BOARD_PLATFORM := trinket
+TARGET_BOARD_PLATFORM_GPU := qcom-adreno610
 
 # Architecture
 TARGET_ARCH := arm64
@@ -60,7 +60,7 @@ BOARD_RAMDISK_OFFSET     := 0x02000000
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
-TARGET_KERNEL_SOURCE := kernel/xiaomi/sdm660
+TARGET_KERNEL_SOURCE := kernel/xiaomi/sm6125
 TARGET_KERNEL_CLANG_COMPILE := true
 
 # QCOM hardware
@@ -142,8 +142,8 @@ DEVICE_MANIFEST_FILE := $(COMMON_PATH)/configs/manifests/manifest.xml
 DEVICE_MATRIX_FILE := $(COMMON_PATH)/configs/manifests/compatibility_matrix.xml
 
 # Init
-TARGET_INIT_VENDOR_LIB := //$(COMMON_PATH):libinit_sdm660
-TARGET_RECOVERY_DEVICE_MODULES := libinit_sdm660
+TARGET_INIT_VENDOR_LIB := //$(COMMON_PATH):libinit_trinket
+TARGET_RECOVERY_DEVICE_MODULES := libinit_trinket
 
 # Keystore
 TARGET_PROVIDES_KEYMASTER := true
@@ -205,4 +205,4 @@ WIFI_HIDL_FEATURE_DUAL_INTERFACE := true
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # Inherit the proprietary files
-include vendor/xiaomi/sdm660-common/BoardConfigVendor.mk
+include vendor/xiaomi/sm6125-common/BoardConfigVendor.mk

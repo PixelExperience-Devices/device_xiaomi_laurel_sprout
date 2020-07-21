@@ -91,8 +91,8 @@ PRODUCT_PACKAGES += \
     android.hardware.audio.effect@2.0-service \
     android.hardware.soundtrigger@2.1-impl \
     audio.a2dp.default \
-    audio_amplifier.sdm660 \
-    audio.primary.sdm660 \
+    audio_amplifier.trinket \
+    audio.primary.trinket \
     audio.r_submix.default \
     audio.usb.default \
     libaudio-resampler \
@@ -138,7 +138,7 @@ PRODUCT_COPY_FILES += \
 
 # Biometrics
 PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.1-service.xiaomi_sdm660
+    android.hardware.biometrics.fingerprint@2.1-service.xiaomi_trinket
 
 PRODUCT_PACKAGES += \
     org.ifaa.android.manager
@@ -178,9 +178,9 @@ PRODUCT_COPY_FILES += \
 
 # Display
 PRODUCT_PACKAGES += \
-    gralloc.sdm660 \
-    hwcomposer.sdm660 \
-    memtrack.sdm660 \
+    gralloc.trinket \
+    hwcomposer.trinket \
+    memtrack.trinket \
     libdisplayconfig \
     liboverlay \
     libtinyxml \
@@ -292,7 +292,7 @@ PRODUCT_COPY_FILES += \
 
 # Lights
 PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-service.xiaomi_sdm660
+    android.hardware.light@2.0-service.xiaomi_trinket
 
 # LiveDisplay native
 PRODUCT_PACKAGES += \
@@ -417,7 +417,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.thermal@1.0-impl \
     android.hardware.thermal@1.0-service \
-    thermal.sdm660
+    thermal.trinket
 
 # Trust
 PRODUCT_PACKAGES += \
@@ -452,4 +452,4 @@ PRODUCT_BOOT_JARS += \
     WfdCommon
 
 # Inherit the proprietary files
-$(call inherit-product, vendor/xiaomi/sdm660-common/sdm660-common-vendor.mk)
+$(call inherit-product, vendor/xiaomi/sm6125-common/sm6125-common-vendor.mk)

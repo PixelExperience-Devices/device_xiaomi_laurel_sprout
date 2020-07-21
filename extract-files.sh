@@ -17,7 +17,7 @@
 
 set -e
 
-DEVICE_COMMON=sdm660-common
+DEVICE_COMMON=sm6125-common
 VENDOR=xiaomi
 
 # Load extract_utils and do some sanity checks
