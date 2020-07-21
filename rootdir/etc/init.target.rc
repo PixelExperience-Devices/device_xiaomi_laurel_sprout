@@ -109,8 +109,6 @@ on post-fs-data
     mkdir /data/vendor/hbtp 0750 system system
     mkdir /persist/qti_fp 0700 system system
     mkdir /data/vendor/nnhal 0700 system system
-    chmod 0644 /dev/goodix_fp
-    chown system system /dev/goodix_fp
 #EXTR 57954  zhangzhiqiang,MODIFY,20190425,thermal config switch support
     mkdir /data/vendor/thermal 0771 system system
     mkdir /data/vendor/thermal/config 0771 system system
