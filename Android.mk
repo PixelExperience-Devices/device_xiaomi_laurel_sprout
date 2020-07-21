@@ -16,7 +16,7 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifneq ($(filter jasmine_sprout jason lavender twolip wayne whyred,$(TARGET_DEVICE)),)
+ifneq ($(filter laurel_sprout ginkgo,$(TARGET_DEVICE)),)
 
 include $(CLEAR_VARS)
 
