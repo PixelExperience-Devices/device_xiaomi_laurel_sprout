@@ -1,6 +1,3 @@
-# Biometric
-/(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.1-service\.xiaomi_trinket   u:object_r:hal_fingerprint_trinket_exec:s0
-
 # Fingerprint
 /data/gf_data(/.*)?                             u:object_r:fingerprintd_data_file:s0
 /data/vendor/fpc(/.*)?                          u:object_r:fingerprint_vendor_data_file:s0
