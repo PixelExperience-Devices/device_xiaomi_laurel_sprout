@@ -40,7 +40,7 @@
 #include <unistd.h>
 
 #define LOG_TAG "QTI PowerHAL"
-#include <utils/Log.h>
+#include <log/log.h>
 #include <hardware/hardware.h>
 #include <hardware/power.h>
 
@@ -59,8 +59,7 @@ static int camera_hint_ref_count;
 static void process_video_encode_hint(void *metadata);
 static void process_video_encode_hfr_hint(void *metadata);
 
-int  power_hint_override(struct power_module *module, power_hint_t hint,
-        void *data)
+int power_hint_override(power_hint_t hint, void *data)
 {
     switch(hint) {
         case POWER_HINT_VSYNC:
@@ -78,11 +77,13 @@ int  power_hint_override(struct power_module *module, power_hint_t hint,
             process_video_encode_hfr_hint(data);
             return HINT_HANDLED;
         }
+        default:
+            break;
     }
     return HINT_NONE;
 }
 
-int  set_interactive_override(struct power_module *module, int on)
+int set_interactive_override(__attribute__((unused)) int on)
 {
     return HINT_HANDLED; /* to set hints for display on and off. Not in use now */
 }
