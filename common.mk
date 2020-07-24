@@ -35,8 +35,7 @@ PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
     $(LOCAL_PATH)/overlay-lineage/packages/apps/Snap
 
 # Soong namespaces
-PRODUCT_SOONG_NAMESPACES += \
-    $(LOCAL_PATH)
+QCOM_SOONG_NAMESPACE := $(LOCAL_PATH)
 
 # Permissions
 PRODUCT_COPY_FILES += \
