@@ -100,6 +100,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     persist.vendor.cne.feature=1
 
+# Crypto
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.crypto.allow_encrypt_override=true \
+    ro.crypto.volume.filenames_mode=aes-256-cts
+
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.early_app_phase_offset_ns=1500000 \
@@ -133,6 +138,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.dbg.volte_avail_ovr=1 \
     persist.dbg.vt_avail_ovr=1  \
     persist.dbg.wfc_avail_ovr=1
+
+# Keymaster 4.0 - TDES support
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.hardware.keystore_desede=true
 
 # Media
 PRODUCT_PROPERTY_OVERRIDES += \
