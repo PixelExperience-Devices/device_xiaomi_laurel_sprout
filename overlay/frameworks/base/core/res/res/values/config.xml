@@ -22,62 +22,93 @@
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+    <!-- Stability requirements in milliseconds for accepting a new brightness level.  This is used
+         for debouncing the light sensor.  Different constants are used to debounce the light sensor
+         when adapting to brighter or darker environments.  This parameter controls how quickly
+         brightness changes occur in response to an observed change in light level that exceeds the
+         hysteresis threshold. -->
+    <integer name="config_autoBrightnessBrighteningLightDebounce">1000</integer>
+    <integer name="config_autoBrightnessDarkeningLightDebounce">1000</integer>
+
     <!-- Array of light sensor LUX values to define our levels for auto backlight brightness support.
-         The N entries of this array define N + 1 control points as follows:
-         (1-based arrays)
-         Point 1: (0, value[1]): lux <= 0
-         Point 2: (level[1], value[2]): 0 < lux <= level[1]
-         Point 3: (level[2], value[3]): level[2] < lux <= level[3]
+         The N entries of this array define N  1 zones as follows:
+         Zone 0:        0 <= LUX < array[0]
+         Zone 1:        array[0] <= LUX < array[1]
          ...
-         Point N+1: (level[N], value[N+1]): level[N] < lux
-         The control points must be strictly increasing.  Each control point
-         corresponds to an entry in the brightness backlight values arrays.
-         For example, if LUX == level[1] (first element of the levels array)
-         then the brightness will be determined by value[2] (second element
-         of the brightness values array).
-         Spline interpolation is used to determine the auto-brightness
-         backlight values for LUX levels between these control points.
+         Zone N:        array[N - 1] <= LUX < array[N]
+         Zone N + 1     array[N] <= LUX < infinity
          Must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLevels">
-        <item>1</item> <!-- pitch black -->
-        <item>5</item> <!-- dark indoor -->
-        <item>10</item> <!-- twilight -->
-        <item>50</item> <!-- dim indoor -->
-        <item>100</item> <!-- home -->
-        <item>300</item> <!-- office -->
-        <item>500</item> <!-- sunrise -->
-        <item>1000</item> <!-- overcast -->
-        <item>3000</item> <!-- indirect sun -->
-        <item>10000</item> <!-- daylight -->
+        <item>100</item>
+        <item>400</item>
+        <item>2000</item>
+        <item>10000</item>
     </integer-array>
 
-    <!-- Array of output values for LCD backlight corresponding to the LUX values
+    <!-- Array of output values for LCD backlight corresponding to the lux values
          in the config_autoBrightnessLevels array.  This array should have size one greater
          than the size of the config_autoBrightnessLevels array.
          The brightness values must be between 0 and 255 and be non-decreasing.
          This must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLcdBacklightValues">
-        <item>16</item>
+        <item>10</item>
         <item>20</item>
-        <item>24</item>
-        <item>31</item>
-        <item>48</item>
-        <item>74</item>
-        <item>107</item>
-        <item>152</item>
-        <item>194</item>
-        <item>254</item>
+        <item>40</item>
+        <item>70</item>
+        <item>110</item>
+        <item>160</item>
+        <item>200</item>
         <item>255</item>
+    </integer-array>
+
+    <!-- Array of desired screen brightness in nits corresponding to the lux values
+         in the config_autoBrightnessLevels array. As with config_screenBrightnessMinimumNits and
+         config_screenBrightnessMaximumNits, the display brightness is defined as the measured
+         brightness of an all-white image.
+         If this is defined then:
+            - config_autoBrightnessLcdBacklightValues should not be defined
+            - config_screenBrightnessNits must be defined
+            - config_screenBrightnessBacklight must be defined
+         This array should have size one greater than the size of the config_autoBrightnessLevels
+         array. The brightness values must be non-negative and non-decreasing. This must be
+         overridden in platform specific overlays -->
+    <array name="config_autoBrightnessDisplayValuesNits">
+        <item>4</item>
+        <item>87</item>
+        <item>165</item>
+        <item>285</item>
+        <item>432</item>
+    </array>
+
+    <!-- An array describing the screen's backlight values corresponding to the brightness
+         values in the config_screenBrightnessNits array.
+         This array should be equal in size to config_screenBrightnessBacklight. -->
+    <integer-array name="config_screenBrightnessBacklight">
+        <item>1</item>
+        <item>72</item>
+        <item>88</item>
+        <item>178</item>
+        <item>255</item>
+    </integer-array>
+
+    <!-- An array of floats describing the screen brightness in nits corresponding to the backlight
+         values in the config_screenBrightnessBacklight array.  On OLED displays these  values
+         should be measured with an all white image while the display is in the fully on state.
+         Note that this value should *not* reflect the maximum brightness value for any high
+         brightness modes but only the maximum brightness value obtainable in a sustainable manner.
+         This array should be equal in size to config_screenBrightnessBacklight -->
+    <integer-array name="config_screenBrightnessNits">
+        <item>4</item>
+        <item>87</item>
+        <item>165</item>
+        <item>285</item>
+        <item>432</item>
     </integer-array>
 
     <!-- Screen brightness used to dim the screen when the user activity
          timeout expires.  May be less than the minimum allowed brightness setting
          that can be set by the user. -->
     <integer name="config_screenBrightnessDim">10</integer>
-
-    <!-- Default screen brightness setting.
-         Must be in the range specified by minimum and maximum. -->
-    <integer name="config_screenBrightnessSettingDefault">128</integer>
 
     <!-- Minimum screen brightness setting allowed by the power manager.
          The user is forbidden from setting the brightness below this level. -->
@@ -103,14 +134,14 @@
          @see https://www.w3.org/TR/SVG/paths.html#PathData
     -->
     <string translatable="false" name="config_mainBuiltInDisplayCutout">
-        M -80,0 L -80,80 L 80,80 L 80,0 Z
+        M-89.6,0 C-65.1346648,0 -51.1690203,0.18 -36.9506892,31.2970381 C-29.2758076,44.1422902 -15.4572493,53 0.0018857203,53 C15.4610208,53 29.2758076,44.1422902 36.9544607,31.2970381 C51.1690203,0.18 65.1384363,0 89.6,0 L-89.6,0 Z
     </string>
 
     <!-- Height of the status bar -->
-    <dimen name="status_bar_height_portrait">80px</dimen>
-    <dimen name="status_bar_height_landscape">24dp</dimen>
-    <dimen name="rounded_corner_radius_top">106.0px</dimen>
-    <dimen name="rounded_corner_radius_bottom">108.0px</dimen>
+    <dimen name="rounded_corner_radius_bottom">128.0px</dimen>
+    <dimen name="rounded_corner_radius_top">144.0px</dimen>
+    <dimen name="status_bar_height_landscape">56px</dimen>
+    <dimen name="status_bar_height_portrait">70px</dimen>
 
     <!-- List supported color modes. -->
     <integer-array name="config_availableColorModes">

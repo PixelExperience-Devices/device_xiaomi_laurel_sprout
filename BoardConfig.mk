@@ -25,52 +25,35 @@
 # Inherit from sm6125-common
 -include device/xiaomi/sm6125-common/BoardConfigCommon.mk
 
-DEVICE_PATH := device/xiaomi/ginkgo
+DEVICE_PATH := device/xiaomi/laurel_sprout
 
 BUILD_BROKEN_DUP_RULES := true
 
-# Assert
-TARGET_OTA_ASSERT_DEVICE := ginkgo,willow
-
 # Boot animation
-TARGET_SCREEN_HEIGHT := 2340
-TARGET_SCREEN_WIDTH := 1080
+TARGET_SCREEN_HEIGHT := 1560
+TARGET_SCREEN_WIDTH := 720
 
 # Display
-TARGET_SCREEN_DENSITY := 420
+TARGET_SCREEN_DENSITY := 320
 
 # HIDL
-ODM_MANIFEST_SKUS += \
-    nfc
-
-ODM_MANIFEST_NFC_FILES := $(DEVICE_PATH)/manifest_nfc.xml
-
-# Init
-SOONG_CONFIG_NAMESPACES += XIAOMI_TRINKET_INIT
-SOONG_CONFIG_XIAOMI_TRINKET_INIT := DEVICE_LIB
-SOONG_CONFIG_XIAOMI_TRINKET_INIT_DEVICE_LIB := //$(DEVICE_PATH):libinit_ginkgo
+DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/manifest.xml
 
 # Kernel
-TARGET_KERNEL_CONFIG := vendor/ginkgo-perf_defconfig
-
-# NFC
-TARGET_USES_NQ_NFC := true
+TARGET_KERNEL_CONFIG := vendor/laurel_sprout-perf_defconfig
 
 # Partitions
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 4831838208
-BOARD_VENDORIMAGE_PARTITION_SIZE := 1610612736
+BOARD_METADATAIMAGE_PARTITION_SIZE := 16777216
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 3221225472
+BOARD_VENDORIMAGE_PARTITION_SIZE := 1073741824
+
+BOARD_USES_METADATA_PARTITION := true
 
 # Recovery
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
 
-# Releasetools
-TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
-
 # Security patch level
 VENDOR_SECURITY_PATCH := 2020-07-01
 
-# SELinux
-BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
-
 # Inherit the proprietary files
--include vendor/xiaomi/ginkgo/BoardConfigVendor.mk
+-include vendor/xiaomi/laurel_sprout/BoardConfigVendor.mk

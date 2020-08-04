@@ -17,7 +17,7 @@
 
 set -e
 
-export DEVICE=ginkgo
+export DEVICE=laurel_sprout
 export VENDOR=xiaomi
 export DEVICE_BRINGUP_YEAR=2020
 export DEVICE_COMMON=sm6125-common

@@ -17,7 +17,7 @@
 
 set -e
 
-export DEVICE=ginkgo
+export DEVICE=laurel_sprout
 export VENDOR=xiaomi
 export DEVICE_COMMON=sm6125-common
 
@@ -28,6 +28,3 @@ if [[ ! -d "$MY_DIR" ]]; then MY_DIR="$PWD"; fi
 
 LINEAGE_ROOT="$MY_DIR"/../../..
 DEVICE_BLOB_ROOT="$LINEAGE_ROOT"/vendor/"$VENDOR"/"$DEVICE"/proprietary
-
-# Remove vtcamera for ginkgo
-gawk -i inplace '{ p = 1 } /<CameraModuleConfig>/{ t = $0; while (getline > 0) { t = t ORS $0; if (/ginkgo_vtcamera/) p = 0; if (/<\/CameraModuleConfig>/) break } $0 = t } p' "${DEVICE_BLOB_ROOT}/vendor/etc/camera/camera_config.xml"
