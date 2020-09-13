@@ -8,7 +8,7 @@
       "repository": "vendor_xiaomi_laurel_sprout",
       "target_path": "vendor/xiaomi/laurel_sprout",
       "branch": "ten",
-      "remote": "pixel-devices-bitbucket"
+      "remote": "pixel-devices-blobs"
    },
    {
       "repository": "packages_apps_PixelLiveWallpaper",
