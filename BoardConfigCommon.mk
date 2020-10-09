@@ -134,6 +134,7 @@ TARGET_FS_CONFIG_GEN := $(COMMON_PATH)/config.fs
 
 # Power
 BOARD_POWER_CUSTOM_BOARD_LIB := libpower_6125
+TARGET_POWERHAL_MODE_EXT := $(COMMON_PATH)/power/power-mode.cpp
 TARGET_USES_INTERACTION_BOOST := true
 
 # Recovery
