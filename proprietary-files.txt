@@ -1,5 +1,15 @@
 # laurel_sprout package version: V11.0.22.0.QFQMIXM, unless stated otherwise
 
+# Audio hardware
+vendor/lib/hw/audio.primary.trinket.so
+vendor/lib/libaudio_log_utils.so
+vendor/lib/libaudioalsa.so
+vendor/lib/libtinycompress.so
+vendor/lib64/hw/audio.primary.trinket.so
+vendor/lib64/libaudio_log_utils.so
+vendor/lib64/libaudioalsa.so
+vendor/lib64/libtinycompress.so
+
 # Audio ACDB
 vendor/etc/acdbdata/QRD/QRD_Bluetooth_cal.acdb
 vendor/etc/acdbdata/QRD/QRD_Codec_cal.acdb
