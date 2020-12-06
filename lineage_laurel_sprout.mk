@@ -36,6 +36,6 @@ PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 TARGET_VENDOR_PRODUCT_NAME := laurel_sprout
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRIVATE_BUILD_DESC="laurel_sprout-user 10 QKQ1.190910.002 V11.0.22.0.QFQMIXM release-keys"
+    PRIVATE_BUILD_DESC="laurel_sprout-user 10 QKQ1.190910.002 V11.0.23.0.QFQMIXM release-keys"
 
-BUILD_FINGERPRINT := Xiaomi/laurel_sprout/laurel_sprout:10/QKQ1.190910.002/V11.0.22.0.QFQMIXM:user/release-keys
+BUILD_FINGERPRINT := Xiaomi/laurel_sprout/laurel_sprout:10/QKQ1.190910.002/V11.0.23.0.QFQMIXM:user/release-keys
