@@ -21,6 +21,8 @@
 # definition file).
 #
 
+AB_OTA_UPDATER := true
+
 # Inherit from sm6125-common
 $(call inherit-product, device/xiaomi/sm6125-common/common.mk)
 
