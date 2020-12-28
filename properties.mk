@@ -161,6 +161,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.vidc.enc.disable_bframes=1 \
     vendor.vidc.enc.disable.pq=true
 
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    media.settings.xml=/vendor/etc/media_profiles_vendor.xml
+
 # Netflix
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.netflix.bsp_rev=Q6125-17995-1
