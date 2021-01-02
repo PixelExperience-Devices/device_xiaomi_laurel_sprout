@@ -89,6 +89,10 @@ PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
 PRODUCT_PACKAGES += \
     fstab.qcom
 
+# Sensors
+PRODUCT_PACKAGES += \
+    android.hardware.sensors@2.0-service.multihal
+
 # Update engine
 PRODUCT_PACKAGES += \
     update_engine \
