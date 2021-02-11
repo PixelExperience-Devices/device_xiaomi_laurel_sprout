@@ -1,4 +1,4 @@
-# Copyright (c) 2013-2019, The Linux Foundation. All rights reserved.
+# Copyright (c) 2013-2020, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -39,19 +39,16 @@ on init
     write /dev/stune/foreground/schedtune.colocate 0
     write /dev/stune/top-app/schedtune.colocate 1
     write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
-
-on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
 
-    # Start HW service manager early
-    start hwservicemanager
+on early-fs
+    start vold
+
+on fs
     mount_all /vendor/etc/fstab.qcom --early
-    swapon_all /vendor/etc/fstab.qcom
     chown root system /mnt/vendor/persist
     chmod 0771 /mnt/vendor/persist
-    mkdir /mnt/vendor/persist/data 0700 system system
-    mkdir /mnt/vendor/persist/bms 0700 root system
     restorecon_recursive /mnt/vendor/persist
 
     mkdir /mnt/vendor/dsp 0770 root root
@@ -71,32 +68,19 @@ on fs
     chown root root /mnt/vendor/persist/camera/verify_result
     chown root root /mnt/vendor/persist/camera/raw_result
 #- add by renshangyuan.wt 2019/3/19 camera calibration
+
     mkdir /mnt/vendor/persist/goodix 0777 system system
-    chmod 0664 /sys/class/thermal/thermal_message/sconfig
-    chown system system /sys/class/thermal/thermal_message/sconfig
-    chmod 0666 /sys/class/thermal/thermal_message/temp_state
-    chown system system /sys/class/thermal/thermal_message/temp_state
 
 on post-fs
-    start vendor.qseecomd
-    wait_for_prop vendor.sys.listeners.registered true
+    # set RLIMIT_MEMLOCK to 64MB
+    setrlimit 8 67108864 67108864
+
+on early-boot
     write /dev/ipa 1
 
 on late-fs
-    # Start services for bootanim
-    start servicemanager
-    start surfaceflinger
-    start bootanim
-
-    start vendor.configstore-hal
-    start vendor.gralloc-2-0
-
-    # Wait for hwservicemanager ready since fsck might be triggered in mount_all --late
-    # In such case, init won't responce the property_set from hwservicemanager and then
-    # cause services for bootanim not running.
     wait_for_prop hwservicemanager.ready true
-
-    # mount RW partitions which need run fsck
+    exec_start wait_for_keymaster
     mount_all /vendor/etc/fstab.qcom --late
 
 service sec_nvm /vendor/bin/sec_nvm
@@ -105,10 +89,10 @@ service sec_nvm /vendor/bin/sec_nvm
     group system
 
 on post-fs-data
-    mkdir /data/vendor/touchpad 0775 system system
-    mkdir /data/vendor/hbtp 0750 system system
+#    mkdir /data/vendor/hbtp 0750 system system
     mkdir /persist/qti_fp 0700 system system
     mkdir /data/vendor/nnhal 0700 system system
+
 #EXTR 57954  zhangzhiqiang,MODIFY,20190425,thermal config switch support
     mkdir /data/vendor/thermal 0771 system system
     mkdir /data/vendor/thermal/config 0771 system system
@@ -148,7 +132,7 @@ on boot
     chown system system /sys/bus/platform/devices/soc/soc:fpc1020/irq
     chown system system /sys/bus/platform/devices/soc/soc:fpc1020/wakeup_enable
 
-#bug434109 add for goodix fingerprint huangfusheng.wt 20190319
+# access permissions for goodix fingerprint
    mkdir /data/vendor/goodix
    chmod 0777 /data/vendor/goodix
    chown system system /data/vendor/goodix
@@ -178,17 +162,15 @@ on boot
     setprop vendor.usb.qdss.inst.name "qdss"
     setprop sys.usb.configfs 1
 
-    # Touchpanel
-    chown system system /sys/touchpanel/capacitive_keys
-    chown system system /sys/touchpanel/double_tap
-    chown system system /sys/touchpanel/reversed_keys
-
+#Give bk03 partition 0666 permissions, only in the ato version
+on boot && property:ro.factory_mode=1
+	chmod 0666 /dev/block/sde54
 #start camera server as daemon
 #service qcamerasvr /system/bin/mm-qcamera-daemon
 #    class late_start
 #    user camera
 #    group camera system inet input graphics
-
+#pd-mapper
 service vendor.pd_mapper /vendor/bin/pd-mapper
     class core
     user system
@@ -207,11 +189,34 @@ service vendor.per_proxy /vendor/bin/pm-proxy
     group system
     disabled
 
+#+bug 434561 huangfusheng.wt add for check  keybox 20190426
+service check_keymaster /vendor/bin/check_keymaster
+   class core
+   user root
+   group media mediadrm drmrpc
+   oneshot
+   disabled
+
 on property:init.svc.vendor.per_mgr=running
     start vendor.per_proxy
 
 on property:sys.shutdown.requested=*
     stop vendor.per_proxy
+
+on charger
+    setprop vendor.usb.controller 4e00000.dwc3
+    setprop sys.usb.configfs 1
+
+on property:vendor.display.lcd_density=640
+   setprop dalvik.vm.heapgrowthlimit 512m
+on property:vendor.display.lcd_density=560
+   setprop dalvik.vm.heapgrowthlimit 256m
+on property:vendor.display.lcd_density=480
+   setprop dalvik.vm.heapgrowthlimit 128m
+on property:vendor.display.lcd_density=240
+   setprop dalvik.vm.heapgrowthlimit 96m
+on property:vendor.display.lcd_density=160
+   setprop dalvik.vm.heapgrowthlimit 96m
 
 ## import cne init file
 #on post-fs
@@ -233,11 +238,6 @@ service spdaemon /vendor/bin/spdaemon
 #   user root
 #   disabled
 #
-service vendor.qseecomd /vendor/bin/qseecomd
-   class core
-   user root
-   group root
-
 #service qosmgrd /system/bin/qosmgr /system/etc/qosmgr_rules.xml
 #   user system
 #   group system
@@ -265,25 +265,25 @@ service thermal-engine /system/vendor/bin/thermal-engine
 #   user root
 #   group root
 
-service adsprpcd_root /vendor/bin/adsprpcd
-   class main
-   user media
-   group media
+#service adsprpcd_root /vendor/bin/adsprpcd
+#   class main
+#   user media
+#   group media
 
-service adsprpcd /vendor/bin/adsprpcd audiopd
-   class main
-   user media
-   group media
+#service adsprpcd /vendor/bin/adsprpcd audiopd
+#   class main
+#   user media
+#   group media
 
-service adsprpcd_sensorspd /vendor/bin/adsprpcd sensorspd
-   class main
-   user system
-   group system
+#service adsprpcd_sensorspd /vendor/bin/adsprpcd sensorspd
+#   class main
+#   user system
+#   group system
 
-service cdsprpcd /vendor/bin/cdsprpcd
-   class main
-   user system
-   group system
+#service cdsprpcd /vendor/bin/cdsprpcd
+#   class main
+#   user system
+#   group system
 
 #service audiod /vendor/bin/audiod
 #   class late_start
@@ -352,21 +352,6 @@ service cdsprpcd /vendor/bin/cdsprpcd
 #
 #
 #
-## imsdatadaemon starts with root and UID will be downgraded to SYSTEM.
-service vendor.imsqmidaemon /system/vendor/bin/imsqmidaemon
-    class main
-    user system
-    socket ims_qmid stream 0660 system radio
-    group radio log diag
-
-# imsdatadaemon starts with root and UID will be downgraded to SYSTEM.
-service vendor.imsdatadaemon /system/vendor/bin/imsdatadaemon
-    class main
-    user system
-    socket ims_datad stream 0660 system radio
-    group system wifi radio inet log diag
-    disabled
-
 #service mdm_helper /system/bin/mdm_helper
 #    class core
 #    onrestart setprop ro.service.mdm_helper_restarted "true"
@@ -420,14 +405,6 @@ service vendor.imsdatadaemon /system/vendor/bin/imsdatadaemon
 #   group gps system qcom_diag diag log inet net_raw
 #   disabled
 
-service vendor.imsrcsservice /system/vendor/bin/imsrcsd
-    class main
-    user system
-    group radio diag inet log wakelock
-
-on property:vendor.ims.QMI_DAEMON_STATUS=1
-    start vendor.imsdatadaemon
-
 on property:vold.decrypt=trigger_restart_framework
    start vendor.cnss_diag
 
@@ -436,14 +413,6 @@ service vendor.cnss_diag /system/vendor/bin/cnss_diag -q -f -t HELIUM
    user system
    group system wifi inet sdcard_rw media_rw diag
    oneshot
-
-service vendor.ims_rtp_daemon /system/vendor/bin/ims_rtp_daemon
-   class main
-   user system
-   group radio diag inet log
-
-on property:vendor.ims.DATA_DAEMON_STATUS=1
-    restart vendor.ims_rtp_daemon
 
 service ppd /vendor/bin/mm-pp-dpps
     class late_start
@@ -496,7 +465,24 @@ service energy-awareness /system/vendor/bin/energy-awareness
     group system
     oneshot
 
+service audioshell_service /vendor/bin/audioshell_service
+    oneshot
+    disabled
+
+on property:ro.vendor.miui.region=*
+    start audioshell_service
+
 service smcinvoked /system/bin/smcinvoked
     class main
     user system
     group system
+
+service dcvs-sh /vendor/bin/init.qti.dcvs.sh
+    class late_start
+    user root
+    group root system
+    disabled
+    oneshot
+
+on property:vendor.dcvs.prop=1
+   start dcvs-sh
