@@ -3,4 +3,5 @@ libadsprpc.so
 libcdsprpc.so
 libsdsprpc.so
 libfastcvopt.so
+liblistensoundmodel2.so
 libOpenCL.so
