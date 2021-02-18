@@ -9,7 +9,7 @@
 set -e
 
 export DEVICE=laurel_sprout
-export DEVICE_SPECIFIED_COMMON=sm6125-common
+export DEVICE_COMMON=sm6125-common
 export VENDOR=xiaomi
 
-"./../../${VENDOR}/${DEVICE_SPECIFIED_COMMON}/setup-makefiles.sh" "$@"
+"./../../${VENDOR}/${DEVICE_COMMON}/setup-makefiles.sh" "$@"
