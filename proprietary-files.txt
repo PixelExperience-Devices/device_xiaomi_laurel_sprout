@@ -243,8 +243,12 @@ vendor/bin/hw/android.hardware.drm@1.3-service.widevine
 -vendor/etc/vintf/manifest/manifest_android.hardware.drm@1.3-service.widevine.xml
 
 # DRM - Widevine L1
-vendor/lib64/liboemcrypto.so
+vendor/lib/libminksocket.so
 vendor/lib/liboemcrypto.so
+vendor/lib/libtrustedapploader.so
+vendor/lib64/libminksocket.so
+vendor/lib64/liboemcrypto.so
+vendor/lib64/libtrustedapploader.so
 
 # DSP
 vendor/bin/dspservice
