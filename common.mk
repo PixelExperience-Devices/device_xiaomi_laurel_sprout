@@ -309,6 +309,7 @@ PRODUCT_COPY_FILES += \
 
 # OMX
 PRODUCT_PACKAGES += \
+    libavservices_minijail \
     libavservices_minijail.vendor \
     libc2dcolorconvert \
     libhypv_intercept \
