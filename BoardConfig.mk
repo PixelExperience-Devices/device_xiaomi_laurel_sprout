@@ -67,7 +67,7 @@ TARGET_NO_RECOVERY := true
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
 
 # Security patch level
-VENDOR_SECURITY_PATCH := 2021-01-05
+VENDOR_SECURITY_PATCH := 2021-02-05
 
 # SELinux
 BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
