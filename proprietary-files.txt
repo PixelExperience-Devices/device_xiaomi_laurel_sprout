@@ -1,4 +1,4 @@
-# laurel_sprout package version: RKQ1.200903.002 V12.0.6.0.RFQMIXM, unless stated otherwise
+# laurel_sprout package version: RKQ1.200903.002 V12.0.7.0.RFQMIXM, unless stated otherwise
 
 # ACDB loader
 vendor/lib64/libacdb-fts.so
