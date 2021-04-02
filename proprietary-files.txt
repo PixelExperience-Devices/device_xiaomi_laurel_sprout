@@ -1,4 +1,4 @@
-# laurel_sprout package version: V12.0.6.0.RFQMIXM, unless stated otherwise
+# laurel_sprout package version: V12.0.7.0.RFQMIXM, unless stated otherwise
 
 # Audio hardware
 vendor/lib/hw/audio.primary.trinket.so
