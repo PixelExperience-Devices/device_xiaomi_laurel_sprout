@@ -159,6 +159,10 @@ PRODUCT_SYSTEM_EXT_PROPERTIES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.frp.pst=/dev/block/bootdevice/by-name/frp
 
+# GPS
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    persist.vendor.overlay.izat.optin=rro
+
 # IMS
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.dbg.volte_avail_ovr=1 \
@@ -171,19 +175,20 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Media
 PRODUCT_PROPERTY_OVERRIDES += \
-    debug.stagefright.omx_default_rank.sw-audio=1 \
-    debug.stagefright.omx_default_rank=0 \
-    media.stagefright.thumbnail.prefer_hw_codecs=true \
-    vendor.vidc.dec.enable.downscalar=1 \
-    vendor.vidc.enc.disable_bframes=1 \
-    vendor.vidc.enc.disable.pq=true
+    debug.stagefright.ccodec=1 \
+    debug.stagefright.omx_default_rank=0
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    media.settings.xml=/vendor/etc/media_profiles_vendor.xml
+    media.settings.xml=/vendor/etc/media_profiles_vendor.xml \
+    media.stagefright.thumbnail.prefer_hw_codecs=true
 
 # Netflix
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.netflix.bsp_rev=Q6125-17995-1
+
+# Pasr
+PRODUCT_PROPERTY_OVERRIDES += \
+    vendor.power.pasr.enabled=true
 
 # Perf
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -192,30 +197,33 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.multisim.config=dsds \
-    persist.vendor.data.mode=concurrent \
     persist.vendor.radio.apm_sim_not_pwdn=1 \
-    persist.vendor.radio.atfwd.start=true \
     persist.vendor.radio.custom_ecc=1 \
+    persist.vendor.radio.enableadvancedscan=true \
+    persist.vendor.radio.procedure_bytes=SKIP \
     persist.vendor.radio.rat_on=combine \
     persist.vendor.radio.sib16_support=1 \
-    ro.telephony.default_network=22,22 \
-    ro.vendor.use_data_netmgrd=true
+    ro.telephony.iwlan_operation_mode=legacy
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     DEVICE_PROVISIONED=1 \
-    persist.sys.fflag.override.settings_network_and_internet_v2=true \
+    persist.radio.NO_STAPA=1 \
+    persist.vendor.data.mode=concurrent \
+    persist.vendor.radio.atfwd.start=true \
+    persist.vendor.radio.force_on_dc=true \
     ril.subscription.types=NV,RUIM \
+    ro.telephony.default_network=22,22 \
+    ro.vendor.use_data_netmgrd=true \
     telephony.lteOnCdmaDevice=1
 
 # Sensor
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.sdk.sensors.gestures=false \
-    ro.vendor.sensors.cmc=false \
-    ro.vendor.sensors.facing=false \
-    ro.vendor.sensors.dev_ori=true \
-    ro.vendor.sensors.pmd=true \
-    ro.vendor.sensors.sta_detect=true \
-    ro.vendor.sensors.mot_detect=true
+    persist.vendor.sensors.enable.bypass_worker=true \
+    persist.vendor.sensors.enable.rt_task=false \
+    persist.vendor.sensors.support_direct_channel=false
+
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    persist.vendor.sensors.enable.mag_filter=true
 
 # Time
 PRODUCT_PROPERTY_OVERRIDES += \
