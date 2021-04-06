@@ -266,6 +266,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     persist.debug.wfd.enable=1
 
+# Zram
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.zram.mark_idle_delay_mins=60 \
+    ro.zram.first_wb_delay_mins=180 \
+    ro.zram.periodic_wb_delay_hours=24
+
 # Zygote
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     persist.device_config.runtime_native.usap_pool_enabled=true
