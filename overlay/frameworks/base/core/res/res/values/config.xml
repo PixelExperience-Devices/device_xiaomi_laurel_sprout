@@ -1008,4 +1008,12 @@
 
     <!-- Enable Zram writeback feature to allow unused pages in zram be written to flash. -->
     <bool name="config_zramWriteback">true</bool>
+
+    <!-- Default fod pressed color
+         0 = White
+         1 = Cyan
+         2 = Green
+         3 = Yellow
+    -->
+    <integer name="config_fod_pressed_color">0</integer>
 </resources>
