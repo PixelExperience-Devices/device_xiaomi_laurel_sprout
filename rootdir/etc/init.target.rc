@@ -495,3 +495,7 @@ on property:vendor.dcvs.prop=1
 
 on property:sys.boot_completed=1
     swapon_all /vendor/etc/fstab.qcom 
+
+    # Restrict permissions to socket file 
+    # to hide Magisk & co.
+    chmod 440 /proc/net/unix
