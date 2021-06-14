@@ -5,3 +5,24 @@
 
 # HALs
 /vendor/bin/hw/vendor\.lineage\.biometrics\.fingerprint\.inscreen@1.0-service\.xiaomi_laurel_sprout            u:object_r:hal_lineage_fod_default_exec:s0
+# Fingerprint
+/data/gf_data(/.*)?                             u:object_r:fingerprintd_data_file:s0
+/data/vendor/fpc(/.*)?                          u:object_r:fingerprint_vendor_data_file:s0
+/data/vendor/gf_data(/.*)?                      u:object_r:fingerprint_vendor_data_file:s0
+/data/vendor/goodix(/.*)?                       u:object_r:fingerprint_vendor_data_file:s0
+/dev/goodix_fp                                  u:object_r:fingerprint_device:s0
+
+# Hexagon DSP-side executable needed for Halide operation
+# This is labeled as public_adsprpcd_file as it needs to be read by apps
+# (e.g. Google Camera App)
+/mnt/vendor/dsp/fastrpc_shell_3                 u:object_r:public_adsprpcd_file:s0
+
+# IR
+/dev/lirc0                                      u:object_r:spidev_device:s0
+/dev/spidev[0-9]\.1                             u:object_r:spidev_device:s0
+
+# Light HAL
+/(vendor|system/vendor)/bin/hw/android\.hardware\.light@2\.0-service\.xiaomi_trinket                     u:object_r:hal_light_default_exec:s0
+
+# Thermal
+/data/vendor/thermal(/.*)?                      u:object_r:thermal_data_file:s0
