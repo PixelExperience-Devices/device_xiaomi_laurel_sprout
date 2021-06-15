@@ -1018,3 +1018,8 @@ service vendor.contexthub-hal-1-0 /vendor/bin/hw/android.hardware.contexthub@1.0
     user system
     group system
     disabled
+
+on property:vendor.post_boot.parsed=1
+    # Adaptive charging
+    chown system system /sys/class/power_supply/battery/input_suspend
+    chmod 0666 /sys/class/power_supply/battery/input_suspend

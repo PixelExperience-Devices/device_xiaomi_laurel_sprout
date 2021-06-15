@@ -980,4 +980,9 @@
 
     <!-- Show a custom view for FOD -->
     <bool name="config_needCustomFODView">true</bool>
+
+    <!-- Adaptive charging -->
+    <string name="config_adaptiveChargingSysfsNode" translatable="false">/sys/class/power_supply/battery/input_suspend</string>
+    <string name="config_adaptiveChargingSuspendValue" translatable="false">1</string>
+    <string name="config_adaptiveChargingResumeValue" translatable="false">0</string>
 </resources>
