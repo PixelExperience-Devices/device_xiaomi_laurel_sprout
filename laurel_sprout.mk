@@ -252,6 +252,7 @@ PRODUCT_PACKAGES += \
     android.hidl.manager@1.0
 
 PRODUCT_PACKAGES += \
+    libhidltransport.vendor \
     libhwbinder.vendor
 
 # Init
