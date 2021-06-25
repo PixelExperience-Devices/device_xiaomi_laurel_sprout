@@ -255,6 +255,12 @@ PRODUCT_PACKAGES += \
     libhidltransport.vendor \
     libhwbinder.vendor
 
+# Hotword Permissions
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/hotwords/com.android.hotwordenrollment.common.util.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/com.android.hotwordenrollment.common.util.xml \
+    $(LOCAL_PATH)/configs/hotwords/hotword-whitelist.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/hotword-whitelist.xml \
+    $(LOCAL_PATH)/configs/hotwords/privapp-permissions-hotword.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-hotword.xml
+
 # Init
 PRODUCT_PACKAGES += \
     init.class_main.sh \
