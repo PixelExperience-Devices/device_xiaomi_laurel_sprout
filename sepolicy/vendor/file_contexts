@@ -4,7 +4,7 @@
 /sys/class/touch/tp_dev/fod_status                    u:object_r:sysfs_fod:s0
 
 # HALs
-/vendor/bin/hw/vendor\.lineage\.biometrics\.fingerprint\.inscreen@1.0-service\.xiaomi_laurel_sprout            u:object_r:hal_lineage_fod_default_exec:s0
+/vendor/bin/hw/vendor\.lineage\.biometrics\.fingerprint\.inscreen@1.0-service\.xiaomi_laurel_sprout            u:object_r:hal_fod_laurel_exec:s0
 # Fingerprint
 /data/gf_data(/.*)?                             u:object_r:fingerprintd_data_file:s0
 /data/vendor/fpc(/.*)?                          u:object_r:fingerprint_vendor_data_file:s0

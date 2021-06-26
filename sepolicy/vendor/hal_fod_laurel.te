@@ -1,0 +1,12 @@
+type sysfs_fod, sysfs_type, fs_type;
+hal_server_domain(hal_fod_laurel, hal_lineage_fod)
+
+init_daemon_domain(hal_fod_laurel)
+
+allow hal_fod_laurel sysfs_fod:file rw_file_perms;
+allow hal_fod_laurel sysfs_graphics:dir r_dir_perms;
+allow hal_fod_laurel sysfs_graphics:file rw_file_perms;
+
+allow hal_fod_laurel hal_fingerprint_hwservice_xiaomi:hwservice_manager find;
+
+binder_call(hal_fod_laurel, hal_fingerprint_default)
