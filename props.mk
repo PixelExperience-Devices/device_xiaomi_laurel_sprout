@@ -243,10 +243,6 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.vendor.use_data_netmgrd=true \
     telephony.lteOnCdmaDevice=1
 
-# Seamless transfer
-PRODUCT_PRODUCT_PROPERTIES += \
-    sys.fflag.override.settings_seamless_transfer=true
-
 # Sensor
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.sensors.enable.bypass_worker=true \
