@@ -6,3 +6,4 @@ type hal_fod_laurel, domain;
 type hal_fod_laurel_exec, exec_type, vendor_file_type, file_type;
 type kcal_dev, sysfs_type, fs_type;
 type sysfs_fcharge, sysfs_type, fs_type;
+type vibrator_dev, sysfs_type, fs_type;
