@@ -111,19 +111,17 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.btconfigstore@2.0.vendor
 
 # Camera
-PRODUCT_PACKAGES += \
-    libstdc++.vendor \
-    Snap
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.flash-autofocus.xml \
+    frameworks/native/data/etc/android.hardware.camera.front.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.front.xml \
+    frameworks/native/data/etc/android.hardware.camera.full.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.full.xml \
+    frameworks/native/data/etc/android.hardware.camera.raw.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.raw.xml
 
 PRODUCT_PACKAGES += \
-    android.hardware.camera.device@3.4:64 \
-    android.hardware.camera.device@3.5:64 \
-    android.hardware.camera.provider@2.4:64 \
-    android.hardware.camera.provider@2.4-impl \
-    android.hardware.camera.provider@2.4-service \
-    android.hardware.camera.provider@2.5:64 \
+    libstdc++.vendor \
+    libcamera2ndk_vendor \
     libdng_sdk.vendor \
-    vendor.qti.hardware.camera.device@1.0:64
+    Snap
 
 # Charger
 PRODUCT_PACKAGES += \
@@ -163,7 +161,7 @@ PRODUCT_PACKAGES += \
     libqdMetaData.system
 
 PRODUCT_PACKAGES += \
-    android.frameworks.displayservice@1.0_32 \
+    android.frameworks.displayservice@1.0 \
     android.hardware.graphics.mapper@3.0-impl-qti-display \
     android.hardware.graphics.mapper@4.0-impl-qti-display \
     android.hardware.graphics.composer@2.4-service \

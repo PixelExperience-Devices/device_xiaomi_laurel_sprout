@@ -126,6 +126,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.camera.preview.ubwc=0 \
     vendor.video.disable.ubwc=1 \
+    camera.disable_zsl_mode=true \
     vidc.enc.dcvs.extra-buff-count=2
 
 # Charger
