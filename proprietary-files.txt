@@ -2651,6 +2651,9 @@ vendor/lib/libmmcamera_laurus_sunny_imx586_eeprom.so
 vendor/lib/libmmcamera_laurus_sunny_s5k4h7_eeprom.so
 vendor/lib/libmmcamera_laurus_sunny_s5kgd1_eeprom.so
 
+# Camera service
+lib/libcameraservice.so
+
 # Consumerir
 vendor/lib64/hw/consumerir.default.so:vendor/lib64/hw/consumerir.trinket.so
 
