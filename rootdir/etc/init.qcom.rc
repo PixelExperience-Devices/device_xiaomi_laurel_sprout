@@ -1024,3 +1024,16 @@ on property:vendor.post_boot.parsed=1
     # Adaptive charging
     chown system system /sys/class/power_supply/battery/input_suspend
     chmod 0666 /sys/class/power_supply/battery/input_suspend
+
+#workaround for camera HAL can not read sys property
+on property:sys.camera.face.unlock=*
+    setprop vendor.camera.face.unlock ${sys.camera.face.unlock}
+#add MIUI camera flag
+on property:sys.camera.miui.apk=*
+    setprop vendor.camera.miui.apk ${sys.camera.miui.apk}
+#add cts camera flag
+on property:sys.camera.not.cts.apk=*
+    setprop vendor.camera.not.cts.apk ${sys.camera.not.cts.apk}
+#add cts verify flag
+on property:sys.camera.not.ctsverify.apk=*
+    setprop vendor.camera.not.ctsverify.apk ${sys.camera.not.ctsverify.apk}
