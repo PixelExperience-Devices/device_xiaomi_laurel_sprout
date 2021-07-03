@@ -17,9 +17,6 @@
     <string name="advanced_settings">Xiaomi Parts</string>
     <string name="advanced_settings_summary">Extra Device Settings</string>
 
-    <!--  Audio -->
-    <string name="audio_title">Audio</string>
-
     <!-- Dirac settings -->
     <string name="dirac_title">Mi Sound Enhancer</string>
     <string name="dirac_summary">Optimize audio quality</string>

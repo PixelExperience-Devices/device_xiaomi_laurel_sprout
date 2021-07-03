@@ -17,33 +17,6 @@
     <string name="advanced_settings">Налаштування Xiaomi</string>
     <string name="advanced_settings_summary">Додаткові налаштування</string>
 
-    <!--  Audio -->
-    <string name="audio_title">Аудіо</string>
-
-    <!-- Dirac settings -->
-    <string name="dirac_title">Покращення звуку Mi</string>
-    <string name="dirac_summary">Оптимізуйте якість звуку</string>
-    <string name="dirac_headset_title">Вибрати тип навушників</string>
-    <string name="dirac_preset_title">Вибрати шаблон</string>
-
-    <!-- Dirac settings: Headset types -->
-    <string name="dirac_headset_default">За замовчуванням</string>
-    <string name="dirac_headset_general">Звичайні</string>
-    <string name="dirac_headset_general_inear">Звичайні внутрішньоканальні</string>
-
-    <!-- Dirac settings: Equalizer presets -->
-    <string name="dirac_preset_default">За замовчуванням</string>
-    <string name="dirac_preset_rock">Рок</string>
-    <string name="dirac_preset_jazz">Джаз</string>
-    <string name="dirac_preset_pop">Поп</string>
-    <string name="dirac_preset_classical">Класика</string>
-    <string name="dirac_preset_hiphop">Хіп-хоп</string>
-    <string name="dirac_preset_blues">Блюз</string>
-    <string name="dirac_preset_electronic">Електроніка</string>
-    <string name="dirac_preset_country">Кантрі</string>
-    <string name="dirac_preset_dance">Танцювальні</string>
-    <string name="dirac_preset_metal">Метал</string>
-
     <!-- Display -->
     <string name="display_title">Екран</string>
 
