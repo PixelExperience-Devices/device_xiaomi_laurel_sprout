@@ -432,7 +432,7 @@ PRODUCT_PACKAGES += \
 # SOC Properties - for S
 PRODUCT_VENDOR_PROPERTIES += \
     ro.soc.manufacturer=Qualcomm \
-    ro.soc.model=SDM8150
+    ro.soc.model=SM6125
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
