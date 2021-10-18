@@ -260,6 +260,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     persist.debug.wfd.enable=1
 
+# XML
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.binary_xml=false
+
 # Zram
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.zram.mark_idle_delay_mins=60 \
