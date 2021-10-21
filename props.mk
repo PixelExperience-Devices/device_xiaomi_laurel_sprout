@@ -108,15 +108,13 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
+    persist.bluetooth.sbc_hd_higher_bitrate=1 \
     persist.vendor.qcom.bluetooth.soc=cherokee \
     vendor.qcom.bluetooth.soc=cherokee
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    persist.vendor.bt.a2dp.aac_whitelist=false \
-    persist.vendor.qcom.bluetooth.enable.splita2dp=true \
-    persist.vendor.qcom.bluetooth.a2dp_offload_cap=sbc-aptx-aptxhd-aac-ldac \
-    ro.bluetooth.library_name=libbluetooth_qti.so \
-    vendor.bluetooth.soc=cherokee
+    persist.bluetooth.a2dp_offload.cap=sbc-aac-aptx-aptxhd-ldac \
+    ro.vendor.bluetooth.wipower=false
 
 # Blurs
 PRODUCT_PRODUCT_PROPERTIES += \
