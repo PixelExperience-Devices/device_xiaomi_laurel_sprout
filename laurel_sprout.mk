@@ -532,9 +532,6 @@ PRODUCT_PACKAGES += \
     libnl \
     libwfdaac_vendor
 
-PRODUCT_BOOT_JARS += \
-    WfdCommon
-
 # Xiaomi
 PRODUCT_PACKAGES += \
     XiaomiParts
