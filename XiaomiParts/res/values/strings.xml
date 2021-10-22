@@ -91,6 +91,7 @@
     <!-- Ambient Display -->
     <string name="ambient_display_xiaomi">Xiaomi Doze</string>
     <string name="advanced_doze_summary">Ambient Display</string>
+    <string name="ambient_enable">Use ambient display</string>
 
     <!-- KCAL -->
     <string name="device_kcal_title">Display Color Calibration</string>

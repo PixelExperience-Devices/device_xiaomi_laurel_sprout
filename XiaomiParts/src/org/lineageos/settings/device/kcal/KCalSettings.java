@@ -16,6 +16,8 @@
 
 package org.lineageos.settings.device.kcal;
 
+import android.app.ActionBar;
+import android.app.Activity;
 import android.os.Bundle;
 import android.provider.Settings;
 import androidx.preference.PreferenceFragment;
@@ -44,7 +46,10 @@ public class KCalSettings extends PreferenceFragment implements
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
+        final ActionBar actionBar = getActivity().getActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
     }
 
     @Override

@@ -16,35 +16,28 @@
 
 package org.lineageos.settings.device;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
-import android.view.MenuItem;
 
-public class DeviceSettingsActivity extends Activity {
+
+import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
+import com.android.settingslib.collapsingtoolbar.R;
+
+public class DeviceSettingsActivity extends CollapsingToolbarBaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        getActionBar().setDisplayHomeAsUpEnabled(true);
-
-        Fragment fragment = getFragmentManager().findFragmentById(android.R.id.content);
+        Fragment fragment = getFragmentManager().findFragmentById(R.id.content_frame);
         DeviceSettings deviceSettingsFragment;
         if (fragment == null) {
             deviceSettingsFragment = new DeviceSettings();
             getFragmentManager().beginTransaction()
-                    .add(android.R.id.content, deviceSettingsFragment)
+                    .add(R.id.content_frame, deviceSettingsFragment)
                     .commit();
         }
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            finish();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 }
