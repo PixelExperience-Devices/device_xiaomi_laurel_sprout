@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2019 The LineageOS Project
+// Copyright (C) 2021 The LineageOS Project
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,20 +14,21 @@
 // limitations under the License.
 
 cc_binary {
-    name: "vendor.lineage.biometrics.fingerprint.inscreen@1.0-service.xiaomi_laurel_sprout",
+    name: "android.hardware.biometrics.fingerprint@2.3-service.laurel_sprout",
     relative_install_path: "hw",
-    vintf_fragments: ["vendor.lineage.biometrics.fingerprint.inscreen@1.0-service.xiaomi_laurel_sprout.xml"],
-    init_rc: ["vendor.lineage.biometrics.fingerprint.inscreen@1.0-service.xiaomi_laurel_sprout.rc"],
+    vintf_fragments: ["android.hardware.biometrics.fingerprint@2.3-service.laurel_sprout.xml"],
+    init_rc: ["android.hardware.biometrics.fingerprint@2.3-service.laurel_sprout.rc"],
     defaults: ["hidl_defaults"],
-    srcs: ["service.cpp", "FingerprintInscreen.cpp"],
+    srcs: ["service.cpp", "BiometricsFingerprint.cpp"],
     shared_libs: [
         "libbase",
-        "libhardware",
         "libhidlbase",
         "liblog",
         "libutils",
-        "vendor.lineage.biometrics.fingerprint.inscreen@1.0",
+        "android.hardware.biometrics.fingerprint@2.1",
+        "android.hardware.biometrics.fingerprint@2.2",
+        "android.hardware.biometrics.fingerprint@2.3",
         "vendor.xiaomi.hardware.fingerprintextension@1.0",
     ],
-    proprietary: true,
+        proprietary: true,
 }
