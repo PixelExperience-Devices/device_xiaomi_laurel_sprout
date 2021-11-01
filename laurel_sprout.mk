@@ -416,6 +416,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/qti_whitelist.xml:system/etc/sysconfig/qti_whitelist.xml
 
+# Pixel Offline charger
+PRODUCT_PACKAGES += \
+    charger_res_images \
+    product_charger_res_images
+
 # QMI
 PRODUCT_PACKAGES += \
     libjson
