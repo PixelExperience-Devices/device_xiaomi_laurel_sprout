@@ -440,6 +440,10 @@ PRODUCT_SOONG_NAMESPACES += \
 
 QCOM_SOONG_NAMESPACE := $(LOCAL_PATH)
 
+# Always preopt extracted APKs to prevent extracting out of the APK
+# for gms modules.
+PRODUCT_ALWAYS_PREOPT_EXTRACTED_APK := true
+
 # Tethering
 PRODUCT_PACKAGES += \
     TetheringConfigOverlay
