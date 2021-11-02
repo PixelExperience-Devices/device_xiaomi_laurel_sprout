@@ -446,6 +446,9 @@ PRODUCT_SYSTEM_SERVER_COMPILER_FILTER := speed-profile
 # Always preopt extracted APKs to prevent extracting out of the APK
 # for gms modules.
 PRODUCT_ALWAYS_PREOPT_EXTRACTED_APK := true
+PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
+PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
+USE_DEX2OAT_DEBUG := false
 
 # Tethering
 PRODUCT_PACKAGES += \
