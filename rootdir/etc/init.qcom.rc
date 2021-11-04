@@ -1039,3 +1039,8 @@ on property:sys.camera.not.cts.apk=*
 #add cts verify flag
 on property:sys.camera.not.ctsverify.apk=*
     setprop vendor.camera.not.ctsverify.apk ${sys.camera.not.ctsverify.apk}
+
+on property:sys.boot_completed=1
+    # Restrict permissions to socket file
+    # to hide Magisk & co.
+    chmod 440 /proc/net/unix
