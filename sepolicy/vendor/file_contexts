@@ -29,9 +29,3 @@
 
 # Vibrator
 /sys/devices/platform/soc/1c40000.qcom,spmi/spmi-0/spmi0-03/1c40000.qcom,spmi:qcom,pmi632@3:qcom,vibrator@5700/leds/vibrator/vtg_level u:object_r:vibrator_dev:s0
-
-# Root Symlinks
-/bt_firmware(/.*)?              u:object_r:bt_firmware_file:s0
-/dsp(/.*)?                      u:object_r:adsprpcd_file:s0
-/firmware(/.*)?                 u:object_r:firmware_file:s0
-/persist(/.*)?                  u:object_r:persist_file:s0
