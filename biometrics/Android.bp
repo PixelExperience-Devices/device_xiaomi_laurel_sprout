@@ -30,5 +30,4 @@ cc_binary {
         "android.hardware.biometrics.fingerprint@2.3",
         "vendor.xiaomi.hardware.fingerprintextension@1.0",
     ],
-        proprietary: true,
 }
