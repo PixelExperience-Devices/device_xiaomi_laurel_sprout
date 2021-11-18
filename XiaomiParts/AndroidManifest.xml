@@ -35,7 +35,7 @@
             android:defaultToDeviceProtectedStorage="true"
             android:directBootAware="true"
             android:enabled="true"
-            android:exported="false">
+            android:exported="true">
             <intent-filter android:priority="1000">
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
 
@@ -46,7 +46,7 @@
 
         <activity
             android:name=".DeviceSettingsActivity"
-            android:exported="false"
+            android:exported="true"
             android:icon="@drawable/ic_mi"
             android:label="@string/advanced_settings"
             android:launchMode="singleTask">
@@ -97,7 +97,7 @@
 
         <activity
             android:name=".kcal.KCalSettingsActivity"
-            android:exported="false"
+            android:exported="true"
             android:label="@string/advanced_settings_kcal">
 
             <intent-filter>
@@ -108,7 +108,7 @@
 
         <activity
             android:name=".speaker.ClearSpeakerActivity" 
-            android:exported="false" 
+            android:exported="true" 
             android:label="@string/clear_speaker_title">
 
             <intent-filter>
