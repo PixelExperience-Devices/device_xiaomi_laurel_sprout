@@ -26,12 +26,47 @@
 #include <android-base/properties.h>
 #include <android-base/stringprintf.h>
 #include <android-base/strings.h>
+#include <linux/input.h>
 
 #include <utils/Log.h>
 #include <utils/Trace.h>
 
 #include "AudioStreaming.h"
 #include "disp-power/DisplayLowPower.h"
+
+namespace {
+int open_ts_input() {
+    int fd = -1;
+    DIR* dir = opendir("/dev/input");
+
+    if (dir != NULL) {
+        struct dirent* ent;
+
+        while ((ent = readdir(dir)) != NULL) {
+            if (ent->d_type == DT_CHR) {
+                char absolute_path[PATH_MAX] = {0};
+                char name[80] = {0};
+
+                strcpy(absolute_path, "/dev/input/");
+                strcat(absolute_path, ent->d_name);
+
+                fd = open(absolute_path, O_RDWR);
+                if (ioctl(fd, EVIOCGNAME(sizeof(name) - 1), &name) > 0) {
+                    if (strcmp(name, "fts_ts") == 0)
+                        break;
+                }
+
+                close(fd);
+                fd = -1;
+            }
+        }
+
+        closedir(dir);
+    }
+
+    return fd;
+}
+}  // anonymous namespace
 
 namespace android {
 namespace hardware {
@@ -44,6 +79,12 @@ using ::android::hardware::Return;
 using ::android::hardware::Void;
 using ::android::hardware::power::V1_0::Feature;
 using ::android::hardware::power::V1_0::Status;
+using ::android::hardware::power::V1_0::PowerStatePlatformSleepState;
+using ::android::hardware::power::V1_1::PowerStateSubsystem;
+using ::android::hardware::power::V1_1::PowerStateSubsystemSleepState;
+
+constexpr int kWakeupModeOff = 4;
+constexpr int kWakeupModeOn = 5;
 
 constexpr char kPowerHalStateProp[] = "vendor.powerhal.state";
 constexpr char kPowerHalAudioProp[] = "vendor.powerhal.audio";
@@ -210,8 +251,20 @@ Return<void> Power::powerHint(PowerHint_1_0 hint, int32_t data) {
     return Void();
 }
 
-Return<void> Power::setFeature(Feature /*feature*/, bool /*activate*/) {
-    // Nothing to do
+Return<void> Power::setFeature(Feature feature, bool activate) {
+    switch (feature) {
+        case Feature::POWER_FEATURE_DOUBLE_TAP_TO_WAKE: {
+            int fd = open_ts_input();
+            struct input_event ev;
+            ev.type = EV_SYN;
+            ev.code = SYN_CONFIG;
+            ev.value = activate ? kWakeupModeOn : kWakeupModeOff;
+            write(fd, &ev, sizeof(ev));
+            close(fd);
+            } break;
+        default:
+            break;
+    }
     return Void();
 }
 
