@@ -1,0 +1,4 @@
+allow platform_app cgroup:file { read };
+allow platform_app zygote:unix_stream_socket { getopt };
+allow platform_app vendor_audio_prop:file { getattr  map  open };
+get_prop(platform_app, vendor_audio_prop);

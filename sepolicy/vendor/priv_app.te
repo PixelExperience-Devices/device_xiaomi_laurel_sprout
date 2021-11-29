@@ -1,1 +1,2 @@
-allow priv_app cgroup:file r_file_perms;
+allow priv_app zygote:unix_stream_socket { getopt };
+allow priv_app mnt_sdcard_file:lnk_file { read };

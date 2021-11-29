@@ -1,1 +1,1 @@
-allow hal_audio_default sysfs:dir r_dir_perms;
+allow hal_audio_default init:binder { call };
