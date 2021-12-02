@@ -69,6 +69,12 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             <instance>default</instance>
         </interface>
     </hal>
+    <!-- Configstore -->
+    <hal format="hidl">
+        <name>android.hardware.configstore</name>
+        <transport>hwbinder</transport>
+        <fqname>@1.1::ISurfaceFlingerConfigs/default</fqname>
+    </hal>
     <!-- display -->
     <hal format="hidl">
         <name>vendor.display.color</name>
