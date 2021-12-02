@@ -251,6 +251,8 @@ PRODUCT_PACKAGES += \
 # HIDL VNDK
 $(foreach target, $(shell cat $(LOCAL_PATH)/vndk/vndk.txt), $(eval PRODUCT_PACKAGES += $(target).vendor))
 
+PRODUCT_EXTRA_VNDK_VERSIONS := 28 29 30
+
 # Hotword Permissions
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/hotwords/com.android.hotwordenrollment.common.util.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/com.android.hotwordenrollment.common.util.xml \
