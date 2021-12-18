@@ -377,7 +377,8 @@ PRODUCT_COPY_FILES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power-service-qti \
+    android.hardware.power@1.3-service.laurel_sprout-libperfmgr \
+    android.hardware.power.stats@1.0-service.pixel \
     vendor.qti.hardware.perf@2.2.vendor
 
 PRODUCT_COPY_FILES += \
@@ -447,6 +448,7 @@ PRODUCT_VENDOR_PROPERTIES += \
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
+    hardware/google/interfaces \
     hardware/xiaomi \
     vendor/qcom/opensource/interfaces \
     vendor/qcom/opensource/commonsys/system/bt
