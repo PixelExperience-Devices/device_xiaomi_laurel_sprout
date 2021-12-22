@@ -27,10 +27,10 @@ sys.fp.                                 u:object_r:hal_fingerprint_prop:s0
 gpu.stats.debug.level                   u:object_r:vendor_default_prop:s0
 
 # RIL
-ro.build.software.version               u:object_r:exported_radio_prop:s0
-ro.fota.oem                             u:object_r:exported_radio_prop:s0
-ro.miui.                                u:object_r:exported_radio_prop:s0
-ro.product.mod_device                   u:object_r:exported_radio_prop:s0
+ro.build.software.version               u:object_r:exported_default_prop:s0
+ro.fota.oem                             u:object_r:exported_default_prop:s0
+ro.miui.                                u:object_r:exported_default_prop:s0
+ro.product.mod_device                   u:object_r:exported_default_prop:s0
 
 # Thermal engine
 persist.sys.thermal.                    u:object_r:thermal_engine_prop:s0
