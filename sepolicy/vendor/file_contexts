@@ -1,5 +1,5 @@
 # HALs
-/(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.3-service\.laurel_sprout                                 u:object_r:hal_fingerprint_default_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2.3-service\.laurel_sprout            u:object_r:hal_fingerprint_default_exec:s0
 
 # Fingerprint
 /data/gf_data(/.*)?                             u:object_r:fingerprintd_data_file:s0

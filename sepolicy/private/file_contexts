@@ -1,0 +1,2 @@
+# HALs
+/system/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.3-service\.laurel_sprout                                 u:object_r:hal_fingerprint_default_exec:s0
