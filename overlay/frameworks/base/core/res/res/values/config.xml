@@ -1022,4 +1022,7 @@
          manager will disable alpha trasformation in animations where not
          strictly needed. -->
          <bool name="config_sf_limitedAlpha">true</bool>
+
+    <!-- Night Light FOD -->
+    <bool name="disable_fod_night_light">true</bool>  
 </resources>
