@@ -117,8 +117,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libstdc++.vendor \
     libcamera2ndk_vendor \
-    libdng_sdk.vendor \
-    Snap
+    libdng_sdk.vendor
 
 # Charger
 PRODUCT_PACKAGES += \
