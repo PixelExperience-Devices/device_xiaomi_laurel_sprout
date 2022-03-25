@@ -1024,5 +1024,5 @@
          <bool name="config_sf_limitedAlpha">true</bool>
 
     <!-- Night Light FOD -->
-    <bool name="disable_fod_night_light">true</bool>  
+    <bool name="config_udfpsDisableNightLight">true</bool>  
 </resources>
