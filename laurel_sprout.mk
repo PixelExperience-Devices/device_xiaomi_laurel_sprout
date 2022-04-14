@@ -256,11 +256,16 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/hotwords/hotword-whitelist.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/hotword-whitelist.xml \
     $(LOCAL_PATH)/configs/hotwords/privapp-permissions-hotword.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-hotword.xml
 
+# Insmod files
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/init.insmod.cfg:$(TARGET_COPY_OUT_VENDOR)/etc/init.insmod.cfg
+
 # Init
 PRODUCT_PACKAGES += \
     init.class_main.sh \
     init.laurel.wifi.rc \
     init.msm.usb.configfs.rc \
+    init.insmod.sh \
     init.qcom.early_boot.sh \
     init.qcom.post_boot.sh \
     init.qcom.rc \

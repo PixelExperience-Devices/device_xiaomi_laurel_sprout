@@ -36,3 +36,11 @@ genfscon sysfs /devices/virtual/misc/msm_multi_aac/wakeup                       
 genfscon sysfs /devices/virtual/misc/msm_qcelp/wakeup                                                                                                                                                                          u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/virtual/misc/msm_wma/wakeup                                                                                                                                                                            u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/virtual/misc/msm_wmapro/wakeup                                                                                                                                                                         u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/virtual/wakeup/wakeup                                                                                                                                                                                  u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/soc:qcom,msm-audio-apr/soc:qcom,msm-audio-apr:qcom,q6core-audio/soc:qcom,msm-audio-apr:qcom,q6core-audio:bolero-cdc/wsa-macro/wsa_swr_ctrl/wakeup/wakeup35                                                                                                                                                       u:object_r:sysfs_wakeup:s0
+
+# Insmod
+genfscon sysfs /kernel/boot_cdsp/boot                                                                                                                        u:object_r:vendor_sysfs_msm_boot:s0
+genfscon sysfs /kernel/boot_slpi/boot                                                                                                                        u:object_r:vendor_sysfs_msm_boot:s0
+genfscon sysfs /devices/virtual/npu/msm_npu/boot                                                                                                             u:object_r:vendor_sysfs_msm_boot:s0
+genfscon sysfs /devices/virtual/cvp/cvp/boot                                                                                                                 u:object_r:vendor_sysfs_msm_boot:s0
