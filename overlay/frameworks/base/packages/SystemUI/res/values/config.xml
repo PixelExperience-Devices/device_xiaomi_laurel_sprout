@@ -88,21 +88,21 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
     <!-- Array of brightness-alpha lut for framework dimming -->
     <string-array name="config_udfpsDimmingBrightnessAlphaArray" translatable="false">
-          <item>0,255</item>
-          <item>1,234</item>
-          <item>3,227</item>
-          <item>8,208</item>
-          <item>16,192</item>
-          <item>27,176</item>
-          <item>41,160</item>
-          <item>61,144</item>
-          <item>80,128</item>
-          <item>104,112</item>
-          <item>130,96</item>
-          <item>158,80</item>
-          <item>188,64</item>
-          <item>221,48</item>
-          <item>250,36</item>
-          <item>255,33</item>
+          <item>0,33</item>
+          <item>1,36</item>
+          <item>3,48</item>
+          <item>8,64</item>
+          <item>16,80</item>
+          <item>27,96</item>
+          <item>41,112</item>
+          <item>61,128</item>
+          <item>80,144</item>
+          <item>104,160</item>
+          <item>130,176</item>
+          <item>158,192</item>
+          <item>188,208</item>
+          <item>221,227</item>
+          <item>250,234</item>
+          <item>255,255</item>
     </string-array>
 </resources>
