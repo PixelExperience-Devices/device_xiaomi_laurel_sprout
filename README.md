@@ -1,5 +1,3 @@
-[![Download Evolution X](https://img.shields.io/sourceforge/dt/evolution-x/laurel_sprout.svg)](https://sourceforge.net/projects/evolution-x/files/laurel_sprout)
-
 # Device Tree for Mi A3 (laurel_sprout)
 
 The Mi A3 (codenamed "laurel_sprout") is a mid-range smartphone from Xiaomi. It was announced and released in July 2019.
