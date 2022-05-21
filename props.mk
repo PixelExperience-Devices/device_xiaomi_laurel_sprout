@@ -53,6 +53,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.bt.aac_frm_ctl.enabled=true \
     vendor.audio.spkr_prot.tx.sampling_rate=48000 \
     persist.vendor.bt.a2dp.aac_whitelist=false \
+    persist.vendor.btstack.a2dp_offload_cap=sbc-aptx-aptxtws-aptxhd-aptxadaptive-aac-ldac \
+    persist.vendor.btstack.enable.splita2dp=true \
     persist.vendor.btstack.enable.twsplus=true \
     persist.vendor.btstack.enable.twsplussho=true
 
