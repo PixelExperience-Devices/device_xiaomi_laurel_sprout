@@ -52,7 +52,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.audio.volume.headset.gain.depcal=true \
     persist.vendor.bt.aac_frm_ctl.enabled=true \
     vendor.audio.spkr_prot.tx.sampling_rate=48000 \
-    persist.vendor.bt.a2dp.aac_whitelist=false
+    persist.vendor.bt.a2dp.aac_whitelist=false \
+    persist.vendor.btstack.enable.twsplus=true
 
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.audio.feature.afe_proxy.enable=true \
