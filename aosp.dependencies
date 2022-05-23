@@ -1,4 +1,10 @@
 [  
+   {
+      "repository": "hardware_xiaomi",
+      "target_path": "hardware/xiaomi",
+      "branch": "twelve",
+      "remote": "pixel"
+   },
    {  
       "repository"   : "device_xiaomi_laurel_sprout",
       "target_path"  : "device/xiaomi/laurel_sprout",
@@ -12,6 +18,7 @@
    {  
       "repository"   : "vendor_xiaomi_laurel_sprout",
       "target_path"  : "vendor/xiaomi/laurel_sprout",
-      "branch"       : "twelve"
+      "branch"       : "twelve",
+      "remote": "pixel-devices-blobs"
    }
 ]
