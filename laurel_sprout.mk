@@ -256,6 +256,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/hotwords/hotword-whitelist.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/hotword-whitelist.xml \
     $(LOCAL_PATH)/configs/hotwords/privapp-permissions-hotword.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-hotword.xml
 
+# IRQ Config
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/irq/msm_irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance.conf
+
 # Insmod files
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/init.insmod.cfg:$(TARGET_COPY_OUT_VENDOR)/etc/init.insmod.cfg
