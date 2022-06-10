@@ -20,5 +20,11 @@
       "target_path"  : "vendor/xiaomi/laurel_sprout",
       "branch"       : "twelve-wip",
       "remote": "pixel-devices-blobs"
+   },
+   {  
+      "repository"   : "vendor_xiaomi_laurel_sprout-extra",
+      "target_path"  : "vendor/xiaomi/laurel_sprout-extra",
+      "branch"       : "twelve",
+      "remote": "pixel-devices-blobs"
    }
 ]
