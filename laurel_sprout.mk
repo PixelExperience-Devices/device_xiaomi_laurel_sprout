@@ -431,11 +431,6 @@ PRODUCT_PACKAGES += \
     libsensorndkbridge \
     android.hardware.sensors@2.0.vendor
 
-# SOC Properties - for S
-PRODUCT_VENDOR_PROPERTIES += \
-    ro.soc.manufacturer=Qualcomm \
-    ro.soc.model=SM6125
-
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
